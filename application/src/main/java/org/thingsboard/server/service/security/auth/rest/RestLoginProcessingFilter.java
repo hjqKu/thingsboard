@@ -55,7 +55,7 @@ public class RestLoginProcessingFilter extends AbstractAuthenticationProcessingF
         this.failureHandler = failureHandler;
         this.objectMapper = mapper;
     }
-
+    //保存的是身份认证信息。
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
             throws AuthenticationException, IOException, ServletException {

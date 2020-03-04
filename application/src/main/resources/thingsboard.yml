@@ -195,25 +195,25 @@ cassandra:
 
 # SQL configuration parameters
 sql:
-    # Specify batch size for persisting attribute updates
-    attributes:
-      batch_size: "${SQL_ATTRIBUTES_BATCH_SIZE:10000}"
-      batch_max_delay: "${SQL_ATTRIBUTES_BATCH_MAX_DELAY_MS:100}"
-      stats_print_interval_ms: "${SQL_ATTRIBUTES_BATCH_STATS_PRINT_MS:10000}"
-    ts:
-      batch_size: "${SQL_TS_BATCH_SIZE:10000}"
-      batch_max_delay: "${SQL_TS_BATCH_MAX_DELAY_MS:100}"
-      stats_print_interval_ms: "${SQL_TS_BATCH_STATS_PRINT_MS:10000}"
-    ts_latest:
-      batch_size: "${SQL_TS_LATEST_BATCH_SIZE:10000}"
-      batch_max_delay: "${SQL_TS_LATEST_BATCH_MAX_DELAY_MS:100}"
-      stats_print_interval_ms: "${SQL_TS_LATEST_BATCH_STATS_PRINT_MS:10000}"
-    ts_timescale:
-      batch_size: "${SQL_TS_TIMESCALE_BATCH_SIZE:10000}"
-      batch_max_delay: "${SQL_TS_TIMESCALE_BATCH_MAX_DELAY_MS:100}"
-      stats_print_interval_ms: "${SQL_TS_TIMESCALE_BATCH_STATS_PRINT_MS:10000}"
-    # Specify whether to remove null characters from strValue of attributes and timeseries before insert
-    remove_null_chars: "${SQL_REMOVE_NULL_CHARS:true}"
+  # Specify batch size for persisting attribute updates
+  attributes:
+    batch_size: "${SQL_ATTRIBUTES_BATCH_SIZE:10000}"
+    batch_max_delay: "${SQL_ATTRIBUTES_BATCH_MAX_DELAY_MS:100}"
+    stats_print_interval_ms: "${SQL_ATTRIBUTES_BATCH_STATS_PRINT_MS:10000}"
+  ts:
+    batch_size: "${SQL_TS_BATCH_SIZE:10000}"
+    batch_max_delay: "${SQL_TS_BATCH_MAX_DELAY_MS:100}"
+    stats_print_interval_ms: "${SQL_TS_BATCH_STATS_PRINT_MS:10000}"
+  ts_latest:
+    batch_size: "${SQL_TS_LATEST_BATCH_SIZE:10000}"
+    batch_max_delay: "${SQL_TS_LATEST_BATCH_MAX_DELAY_MS:100}"
+    stats_print_interval_ms: "${SQL_TS_LATEST_BATCH_STATS_PRINT_MS:10000}"
+  ts_timescale:
+    batch_size: "${SQL_TS_TIMESCALE_BATCH_SIZE:10000}"
+    batch_max_delay: "${SQL_TS_TIMESCALE_BATCH_MAX_DELAY_MS:100}"
+    stats_print_interval_ms: "${SQL_TS_TIMESCALE_BATCH_STATS_PRINT_MS:10000}"
+  # Specify whether to remove null characters from strValue of attributes and timeseries before insert
+  remove_null_chars: "${SQL_REMOVE_NULL_CHARS:true}"
 
 # Actor system parameters
 actors:
@@ -342,19 +342,19 @@ updates:
 
 # spring CORS configuration
 spring.mvc.cors:
-   mappings:
-     # Intercept path
-      "[/api/**]":
-         #Comma-separated list of origins to allow. '*' allows all origins. When not set,CORS support is disabled.
-         allowed-origins: "*"
-         #Comma-separated list of methods to allow. '*' allows all methods.
-         allowed-methods: "*"
-         #Comma-separated list of headers to allow in a request. '*' allows all headers.
-         allowed-headers: "*"
-         #How long, in seconds, the response from a pre-flight request can be cached by clients.
-         max-age: "1800"
-         #Set whether credentials are supported. When not set, credentials are not supported.
-         allow-credentials: "true"
+  mappings:
+    # Intercept path
+    "[/api/**]":
+      #Comma-separated list of origins to allow. '*' allows all origins. When not set,CORS support is disabled.
+      allowed-origins: "*"
+      #Comma-separated list of methods to allow. '*' allows all methods.
+      allowed-methods: "*"
+      #Comma-separated list of headers to allow in a request. '*' allows all headers.
+      allowed-headers: "*"
+      #How long, in seconds, the response from a pre-flight request can be cached by clients.
+      max-age: "1800"
+      #Set whether credentials are supported. When not set, credentials are not supported.
+      allow-credentials: "true"
 
 # spring serve gzip compressed static resources
 spring.resources.chain:
@@ -378,9 +378,9 @@ spring:
     database-platform: "${SPRING_JPA_DATABASE_PLATFORM:org.hibernate.dialect.PostgreSQLDialect}"
   datasource:
     driverClassName: "${SPRING_DRIVER_CLASS_NAME:org.postgresql.Driver}"
-    url: "${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/thingsboard}"
+    url: "${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/thingsboard2}"
     username: "${SPRING_DATASOURCE_USERNAME:postgres}"
-    password: "${SPRING_DATASOURCE_PASSWORD:postgres}"
+    password: "${SPRING_DATASOURCE_PASSWORD:123456}"
     hikari:
       maximumPoolSize: "${SPRING_DATASOURCE_MAXIMUM_POOL_SIZE:50}"
 
