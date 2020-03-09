@@ -63,6 +63,8 @@ public class EntityIdFactory {
                 return new WidgetsBundleId(uuid);
             case WIDGET_TYPE:
                 return new WidgetTypeId(uuid);
+            case STUDENT:
+                return new StudentId((uuid));
         }
         throw new IllegalArgumentException("EntityType " + type + " is not supported!");
     }

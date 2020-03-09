@@ -13,11 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.thingsboard.server.common.data;
+package org.thingsboard.server.dao.sql;
+
+import org.thingsboard.server.dao.model.BaseEntity;
+import org.thingsboard.server.dao.model.SearchTextEntity;
 
 /**
- * @author Andrew Shvayka
+ * Created by Valerii Sosliuk on 5/6/2017.
  */
-public enum EntityType {
-    TENANT, CUSTOMER, USER, DASHBOARD, ASSET, DEVICE, ALARM, RULE_CHAIN, RULE_NODE, ENTITY_VIEW, WIDGETS_BUNDLE, WIDGET_TYPE,STUDENT
+public abstract class JpaAbstractSearchTextTestDao<E extends BaseEntity<D>, D> extends JpaAbstractTestDao<E, D> {
+
+    @Override
+    protected void setSearchText(E entity) {
+        ((SearchTextEntity) entity).setSearchText(((SearchTextEntity) entity).getSearchTextSource().toLowerCase());
+    }
 }

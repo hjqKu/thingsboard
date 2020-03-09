@@ -1,12 +1,12 @@
 /**
  * Copyright © 2016-2020 The Thingsboard Authors
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -265,7 +265,14 @@ public class DeviceController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+    /**
+     * 查询设备列表
+     * limit查询的数量
+     * type
+     * idOffset  当前页最后一个设备的id 为空查前10个 不为空查询当前设备的后10个
+     * textOffset 当前页最后一个设备的名称
+     * */
+//    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/tenant/devices", params = {"limit"}, method = RequestMethod.GET)
     @ResponseBody
     public TextPageData<Device> getTenantDevices(
@@ -425,6 +432,7 @@ public class DeviceController extends BaseController {
                         deferredResult.setResult(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
                     }
                 }
+
                 @Override
                 public void onFailure(Throwable t) {
                     deferredResult.setErrorResult(t);
