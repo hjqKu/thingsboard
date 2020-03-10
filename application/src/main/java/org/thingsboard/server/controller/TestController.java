@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import org.thingsboard.server.common.data.BanStu;
 import org.thingsboard.server.common.data.Student;
+import org.thingsboard.server.common.data.id.TenantId;
 import org.thingsboard.server.common.data.page.TextPageData;
 import org.thingsboard.server.dao.model.sql.StudentEntity;
 import org.thingsboard.server.dao.sql.test.TestRepository;
@@ -31,7 +32,13 @@ public class TestController {
     @Autowired
     private TestRepository testRepository;
     public static void main(String[] args) {
-        System.out.println(UUIDs.timeBased());
+//        System.out.println(UUID.randomUUID());
+//        System.out.println(UUID.randomUUID().toString());
+//        TenantId aa=new TenantId(UUID.randomUUID());
+        System.out.println(UUIDs.timeBased().toString());
+        System.out.println(UUID.fromString(UUIDs.timeBased().toString()));
+        TenantId tenantId=new TenantId(UUID.fromString("ad513ae0-62a1-11ea-8027-8b4eb899b278"));
+
         System.out.println(fromTimeUUID(UUID.fromString(UUIDs.timeBased().toString())));
     }
     @Autowired
