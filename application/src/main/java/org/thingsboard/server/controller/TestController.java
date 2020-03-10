@@ -2,10 +2,18 @@ package org.thingsboard.server.controller;
 
 import com.datastax.driver.core.utils.UUIDs;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import org.thingsboard.server.common.data.BanStu;
 import org.thingsboard.server.common.data.Student;
+import org.thingsboard.server.common.data.page.TextPageData;
+import org.thingsboard.server.dao.model.sql.StudentEntity;
+import org.thingsboard.server.dao.sql.test.TestRepository;
 import org.thingsboard.server.dao.test.TestDao;
+import org.thingsboard.server.test.PageUtil;
+import org.thingsboard.server.test.TestPageReq;
 import org.thingsboard.server.test.TestReq;
 
 import java.util.List;
@@ -20,6 +28,8 @@ import static org.thingsboard.server.common.data.UUIDConverter.fromTimeUUID;
 @RestController
 @RequestMapping("/api")
 public class TestController {
+    @Autowired
+    private TestRepository testRepository;
     public static void main(String[] args) {
         System.out.println(UUIDs.timeBased());
         System.out.println(fromTimeUUID(UUID.fromString(UUIDs.timeBased().toString())));
@@ -54,4 +64,25 @@ public class TestController {
     public int countStu(@RequestBody TestReq req){
         return testDao.countStu();
     }
+    /**
+     * 查询学生分页简单
+     * */
+    @PostMapping(value = "/test/stuPage1")
+    public Page<StudentEntity>  stuPage1(@RequestBody TestPageReq req){
+        //1.适用无任何查询条件 可以直接调用
+//      Page<StudentEntity> entities=testRepository.findAll(new PageRequest(req.getPage(),req.getSize()));
+        //适用单表
+        Pageable pageable = PageRequest.of(req.getPage(),req.getSize());
+        return testDao.stuPage1(req.getSex(),pageable);
+    }
+    /**
+     * 查询学生代码分页
+     * */
+    @PostMapping(value = "/test/stuPage2")
+    public PageUtil stuPage2(@RequestBody TestPageReq req){
+        List<BanStu> banStuList=testDao.findBSByMiX(req.getbName());
+        PageUtil<BanStu> pageUtil=new PageUtil<BanStu>(req.getPage(),req.getSize(),banStuList);
+        return pageUtil;
+    }
+
 }

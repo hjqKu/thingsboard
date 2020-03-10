@@ -1,8 +1,12 @@
 package org.thingsboard.server.dao.sql.test;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.thingsboard.server.common.data.Student;
 import org.thingsboard.server.dao.model.sql.StudentEntity;
 import org.thingsboard.server.dao.util.SqlDao;
 
@@ -13,7 +17,7 @@ import java.util.List;
  * @date 2020/3/4
  */
 @SqlDao
-public interface TestRepository extends CrudRepository<StudentEntity, String> {
+public interface TestRepository extends JpaRepository<StudentEntity, String> {
 
     /**
      * 根据性别姓名动态查询学生
@@ -36,5 +40,10 @@ public interface TestRepository extends CrudRepository<StudentEntity, String> {
      * */
     @Query(value = "select count(s.id) from StudentEntity s")
     int countStu();
+    /**
+     * 分页查询学生表
+     * */
+    @Query(value = "select s from StudentEntity s where sex=?1")
+    Page<StudentEntity>stuPage1(String sex, Pageable pageable);
 
 }

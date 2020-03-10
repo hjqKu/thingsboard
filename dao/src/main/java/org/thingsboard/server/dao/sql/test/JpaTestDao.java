@@ -2,6 +2,8 @@
 package org.thingsboard.server.dao.sql.test;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 import org.thingsboard.server.common.data.*;
@@ -61,5 +63,10 @@ public class JpaTestDao extends JpaAbstractSearchTextTestDao<StudentEntity, Stud
     @Override
     public int countStu() {
         return testRepository.countStu();
+    }
+
+    @Override
+    public Page<StudentEntity> stuPage1(String sex, Pageable pageable) {
+        return testRepository.stuPage1(sex,pageable);
     }
 }
