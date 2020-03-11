@@ -30,6 +30,7 @@ import org.thingsboard.server.common.data.exception.ThingsboardErrorCode;
 import org.thingsboard.server.common.data.exception.ThingsboardException;
 import org.thingsboard.server.common.data.id.EntityId;
 import org.thingsboard.server.common.data.id.EntityIdFactory;
+import org.thingsboard.server.common.data.id.TenantId;
 import org.thingsboard.server.common.data.id.UUIDBased;
 import org.thingsboard.server.common.data.relation.EntityRelation;
 import org.thingsboard.server.common.data.relation.EntityRelationInfo;
@@ -38,6 +39,7 @@ import org.thingsboard.server.common.data.relation.RelationTypeGroup;
 import org.thingsboard.server.service.security.permission.Operation;
 
 import java.util.List;
+import java.util.UUID;
 
 
 @RestController
@@ -235,13 +237,16 @@ public class EntityRelationController extends BaseController {
     public List<EntityRelationInfo> findInfoByTo(@RequestParam(TO_ID) String strToId,
                                                  @RequestParam(TO_TYPE) String strToType,
                                                  @RequestParam(value = "relationTypeGroup", required = false) String strRelationTypeGroup) throws ThingsboardException {
+        //修改TenantId获取
+        TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
         checkParameter(TO_ID, strToId);
         checkParameter(TO_TYPE, strToType);
         EntityId entityId = EntityIdFactory.getByTypeAndId(strToType, strToId);
-        checkEntityId(entityId, Operation.READ);
+        //修改 删除checkEntityId校验
+        //checkEntityId(entityId, Operation.READ);
         RelationTypeGroup typeGroup = parseRelationTypeGroup(strRelationTypeGroup, RelationTypeGroup.COMMON);
         try {
-            return checkNotNull(relationService.findInfoByTo(getTenantId(), entityId, typeGroup).get());
+            return checkNotNull(relationService.findInfoByTo(tenantId, entityId, typeGroup).get());
         } catch (Exception e) {
             throw handleException(e);
         }

@@ -148,6 +148,9 @@ public class TelemetryController extends BaseController {
                 (result, tenantId, entityId) -> getAttributeValuesCallback(result, user, entityId, null, keysStr));
     }
 
+    /**
+     * 获取设备的服务端或共享属性
+     * */
     @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/{entityType}/{entityId}/values/attributes/{scope}", method = RequestMethod.GET)
     @ResponseBody

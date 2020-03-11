@@ -57,10 +57,12 @@ public class EventController extends BaseController {
         checkParameter("EntityId", strEntityId);
         checkParameter("EntityType", strEntityType);
         try {
+            //修改获取TenantId
             TenantId tenantId = new TenantId(toUUID(strTenantId));
 
             EntityId entityId = EntityIdFactory.getByTypeAndId(strEntityType, strEntityId);
-            checkEntityId(entityId, Operation.READ);
+            //修改删除checkEntityId校验
+            //checkEntityId(entityId, Operation.READ);
 
             TimePageLink pageLink = createPageLink(limit, startTime, endTime, ascOrder, offset);
             return checkNotNull(eventService.findEvents(tenantId, entityId, eventType, pageLink));

@@ -39,10 +39,13 @@ import org.thingsboard.server.common.data.exception.ThingsboardErrorCode;
 import org.thingsboard.server.common.data.exception.ThingsboardException;
 import org.thingsboard.server.common.data.id.EntityId;
 import org.thingsboard.server.common.data.id.EntityIdFactory;
+import org.thingsboard.server.common.data.id.TenantId;
 import org.thingsboard.server.common.data.page.TimePageData;
 import org.thingsboard.server.common.data.page.TimePageLink;
 import org.thingsboard.server.service.security.permission.Operation;
 import org.thingsboard.server.service.security.permission.Resource;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -164,10 +167,12 @@ public class AlarmController extends BaseController {
             throw new ThingsboardException("Invalid alarms search query: Both parameters 'searchStatus' " +
                     "and 'status' can't be specified at the same time!", ThingsboardErrorCode.BAD_REQUEST_PARAMS);
         }
-        checkEntityId(entityId, Operation.READ);
+        //修改 去除检查实体(牵扯验证用户需要频繁调用)
+        //checkEntityId(entityId, Operation.READ);
+        TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
         try {
             TimePageLink pageLink = createPageLink(limit, startTime, endTime, ascOrder, offset);
-            return checkNotNull(alarmService.findAlarms(getCurrentUser().getTenantId(), new AlarmQuery(entityId, pageLink, alarmSearchStatus, alarmStatus, fetchOriginator)).get());
+            return checkNotNull(alarmService.findAlarms(tenantId, new AlarmQuery(entityId, pageLink, alarmSearchStatus, alarmStatus, fetchOriginator)).get());
         } catch (Exception e) {
             throw handleException(e);
         }

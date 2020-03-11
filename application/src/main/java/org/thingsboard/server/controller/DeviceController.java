@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -117,15 +118,20 @@ public class DeviceController extends BaseController {
             throw handleException(e);
         }
     }
-
+    /**
+     * 删除设备
+     * */
     @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/device/{deviceId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteDevice(@PathVariable(DEVICE_ID) String strDeviceId) throws ThingsboardException {
         checkParameter(DEVICE_ID, strDeviceId);
         try {
+            //修改获取TenantId
+            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
             DeviceId deviceId = new DeviceId(toUUID(strDeviceId));
-            Device device = checkDeviceId(deviceId, Operation.DELETE);
+            Device device=deviceService.findDeviceById(tenantId,deviceId);
+//            Device device = checkDeviceId(deviceId, Operation.DELETE);
             deviceService.deleteDevice(getCurrentUser().getTenantId(), deviceId);
 
             logEntityAction(deviceId, device,
@@ -222,7 +228,9 @@ public class DeviceController extends BaseController {
             throw handleException(e);
         }
     }
-
+    /**
+     * 复制访问令牌调用接口
+     * */
     @PreAuthorize("hasAnyAuthority('TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/device/{deviceId}/credentials", method = RequestMethod.GET)
     @ResponseBody
@@ -230,8 +238,11 @@ public class DeviceController extends BaseController {
         checkParameter(DEVICE_ID, strDeviceId);
         try {
             DeviceId deviceId = new DeviceId(toUUID(strDeviceId));
-            Device device = checkDeviceId(deviceId, Operation.READ_CREDENTIALS);
-            DeviceCredentials deviceCredentials = checkNotNull(deviceCredentialsService.findDeviceCredentialsByDeviceId(getCurrentUser().getTenantId(), deviceId));
+            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            //修改 调整获取设备方法
+            Device device= deviceService.findDeviceById(tenantId,deviceId);
+            //Device device = checkDeviceId(deviceId, Operation.READ_CREDENTIALS);
+            DeviceCredentials deviceCredentials = checkNotNull(deviceCredentialsService.findDeviceCredentialsByDeviceId(tenantId, deviceId));
             logEntityAction(deviceId, device,
                     device.getCustomerId(),
                     ActionType.CREDENTIALS_READ, null, strDeviceId);
@@ -243,16 +254,22 @@ public class DeviceController extends BaseController {
             throw handleException(e);
         }
     }
-
+    /**
+     * 修改管理凭据
+     * */
     @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/device/credentials", method = RequestMethod.POST)
     @ResponseBody
     public DeviceCredentials saveDeviceCredentials(@RequestBody DeviceCredentials deviceCredentials) throws ThingsboardException {
         checkNotNull(deviceCredentials);
         try {
-            Device device = checkDeviceId(deviceCredentials.getDeviceId(), Operation.WRITE_CREDENTIALS);
+            //修改获取TenantId
+            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            //修改Device获取
+            Device device=deviceService.findDeviceById(tenantId,deviceCredentials.getDeviceId());
+            //Device device = checkDeviceId(deviceCredentials.getDeviceId(), Operation.WRITE_CREDENTIALS);
             DeviceCredentials result = checkNotNull(deviceCredentialsService.updateDeviceCredentials(getCurrentUser().getTenantId(), deviceCredentials));
-            actorService.onCredentialsUpdate(getCurrentUser().getTenantId(), deviceCredentials.getDeviceId());
+            actorService.onCredentialsUpdate(tenantId, deviceCredentials.getDeviceId());
             logEntityAction(device.getId(), device,
                     device.getCustomerId(),
                     ActionType.CREDENTIALS_UPDATED, null, deviceCredentials);
@@ -283,7 +300,8 @@ public class DeviceController extends BaseController {
             @RequestParam(required = false) String textOffset) throws ThingsboardException {
         try {
             //修改部门id
-            TenantId tenantId = getCurrentUser().getTenantId();
+            //TenantId tenantId = getCurrentUser().getTenantId();
+            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
             TextPageLink pageLink = createPageLink(limit, textSearch, idOffset, textOffset);
             if (type != null && type.trim().length() > 0) {
                 return checkNotNull(deviceService.findDevicesByTenantIdAndType(tenantId, type, pageLink));

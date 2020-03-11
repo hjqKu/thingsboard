@@ -62,7 +62,9 @@ public class TenantController extends BaseController {
             throw handleException(e);
         }
     }
-
+    /**
+     * 新增租户
+     * */
     @PreAuthorize("hasAuthority('SYS_ADMIN')")
     @RequestMapping(value = "/tenant", method = RequestMethod.POST)
     @ResponseBody

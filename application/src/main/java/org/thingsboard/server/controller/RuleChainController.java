@@ -62,6 +62,7 @@ import org.thingsboard.server.service.security.permission.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
@@ -146,7 +147,9 @@ public class RuleChainController extends BaseController {
             throw handleException(e);
         }
     }
-
+    /**
+     * 赋予新的规则链根
+     * */
     @PreAuthorize("hasAnyAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/ruleChain/{ruleChainId}/root", method = RequestMethod.POST)
     @ResponseBody
@@ -154,12 +157,16 @@ public class RuleChainController extends BaseController {
         checkParameter(RULE_CHAIN_ID, strRuleChainId);
         try {
             RuleChainId ruleChainId = new RuleChainId(toUUID(strRuleChainId));
-            RuleChain ruleChain = checkRuleChain(ruleChainId, Operation.WRITE);
-            TenantId tenantId = getCurrentUser().getTenantId();
-            RuleChain previousRootRuleChain = ruleChainService.getRootTenantRuleChain(tenantId);
-            if (ruleChainService.setRootRuleChain(getTenantId(), ruleChainId)) {
 
-                previousRootRuleChain = ruleChainService.findRuleChainById(getTenantId(), previousRootRuleChain.getId());
+            //RuleChain ruleChain = checkRuleChain(ruleChainId, Operation.WRITE);
+            //修改获取TenantId
+            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            //TenantId tenantId = getCurrentUser().getTenantId();
+            RuleChain ruleChain=ruleChainService.findRuleChainById(tenantId,ruleChainId);
+            RuleChain previousRootRuleChain = ruleChainService.getRootTenantRuleChain(tenantId);
+            if (ruleChainService.setRootRuleChain(tenantId, ruleChainId)) {
+
+                previousRootRuleChain = ruleChainService.findRuleChainById(tenantId, previousRootRuleChain.getId());
 
                 actorService.onEntityStateChange(previousRootRuleChain.getTenantId(), previousRootRuleChain.getId(),
                         ComponentLifecycleEvent.UPDATED);
@@ -218,7 +225,9 @@ public class RuleChainController extends BaseController {
             throw handleException(e);
         }
     }
-
+    /**
+     * 查询规则链列表
+     * */
     @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/ruleChains", params = {"limit"}, method = RequestMethod.GET)
     @ResponseBody
@@ -228,7 +237,9 @@ public class RuleChainController extends BaseController {
             @RequestParam(required = false) String idOffset,
             @RequestParam(required = false) String textOffset) throws ThingsboardException {
         try {
-            TenantId tenantId = getCurrentUser().getTenantId();
+            //修改获取TenantId
+            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            //TenantId tenantId = getCurrentUser().getTenantId();
             TextPageLink pageLink = createPageLink(limit, textSearch, idOffset, textOffset);
             return checkNotNull(ruleChainService.findTenantRuleChains(tenantId, pageLink));
         } catch (Exception e) {

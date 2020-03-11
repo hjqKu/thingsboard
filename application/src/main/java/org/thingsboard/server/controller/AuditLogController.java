@@ -101,7 +101,8 @@ public class AuditLogController extends BaseController {
         try {
             checkParameter("EntityId", strEntityId);
             checkParameter("EntityType", strEntityType);
-            TenantId tenantId = getCurrentUser().getTenantId();
+            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+//            TenantId tenantId = getCurrentUser().getTenantId();
             TimePageLink pageLink = createPageLink(limit, startTime, endTime, ascOrder, offset);
             List<ActionType> actionTypes = parseActionTypesStr(actionTypesStr);
             return checkNotNull(auditLogService.findAuditLogsByTenantIdAndEntityId(tenantId, EntityIdFactory.getByTypeAndId(strEntityType, strEntityId), actionTypes, pageLink));
@@ -109,7 +110,9 @@ public class AuditLogController extends BaseController {
             throw handleException(e);
         }
     }
-
+    /**
+     *获取审计日志列表
+     * */
     @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/audit/logs", params = {"limit"}, method = RequestMethod.GET)
     @ResponseBody
@@ -121,7 +124,8 @@ public class AuditLogController extends BaseController {
             @RequestParam(required = false) String offset,
             @RequestParam(name = "actionTypes", required = false) String actionTypesStr) throws ThingsboardException {
         try {
-            TenantId tenantId = getCurrentUser().getTenantId();
+            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            //TenantId tenantId = getCurrentUser().getTenantId();
             TimePageLink pageLink = createPageLink(limit, startTime, endTime, ascOrder, offset);
             List<ActionType> actionTypes = parseActionTypesStr(actionTypesStr);
             return checkNotNull(auditLogService.findAuditLogsByTenantId(tenantId, actionTypes, pageLink));
