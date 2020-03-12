@@ -15,8 +15,6 @@
  */
 package org.thingsboard.server.service.security.model;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.thingsboard.server.common.data.User;
 import org.thingsboard.server.common.data.id.UserId;
 
@@ -28,7 +26,6 @@ public class SecurityUser extends User {
 
     private static final long serialVersionUID = -797397440703066079L;
 
-    private Collection<GrantedAuthority> authorities;
     private boolean enabled;
     private UserPrincipal userPrincipal;
 
@@ -46,14 +43,6 @@ public class SecurityUser extends User {
         this.userPrincipal = userPrincipal;
     }
 
-    public Collection<GrantedAuthority> getAuthorities() {
-        if (authorities == null) {
-            authorities = Stream.of(SecurityUser.this.getAuthority())
-                    .map(authority -> new SimpleGrantedAuthority(authority.name()))
-                    .collect(Collectors.toList());
-        }
-        return authorities;
-    }
 
     public boolean isEnabled() {
         return enabled;

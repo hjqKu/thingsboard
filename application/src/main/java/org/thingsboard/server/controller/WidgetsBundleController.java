@@ -16,7 +16,6 @@
 package org.thingsboard.server.controller;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +41,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class WidgetsBundleController extends BaseController {
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/widgetsBundle/{widgetsBundleId}", method = RequestMethod.GET)
     @ResponseBody
     public WidgetsBundle getWidgetsBundleById(@PathVariable("widgetsBundleId") String strWidgetsBundleId) throws ThingsboardException {
@@ -55,7 +54,7 @@ public class WidgetsBundleController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
     @RequestMapping(value = "/widgetsBundle", method = RequestMethod.POST)
     @ResponseBody
     public WidgetsBundle saveWidgetsBundle(@RequestBody WidgetsBundle widgetsBundle) throws ThingsboardException {
@@ -77,7 +76,7 @@ public class WidgetsBundleController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
     @RequestMapping(value = "/widgetsBundle/{widgetsBundleId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteWidgetsBundle(@PathVariable("widgetsBundleId") String strWidgetsBundleId) throws ThingsboardException {
@@ -91,7 +90,7 @@ public class WidgetsBundleController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/widgetsBundles", params = { "limit" }, method = RequestMethod.GET)
     @ResponseBody
     public TextPageData<WidgetsBundle> getWidgetsBundles(
@@ -112,7 +111,7 @@ public class WidgetsBundleController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/widgetsBundles", method = RequestMethod.GET)
     @ResponseBody
     public List<WidgetsBundle> getWidgetsBundles() throws ThingsboardException {

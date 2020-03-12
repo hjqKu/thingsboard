@@ -19,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.BeanCreationNotAllowedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.socket.CloseStatus;
@@ -175,7 +174,8 @@ public class TbWebSocketHandler extends TextWebSocketHandler implements Telemetr
         if (!"telemetry".equalsIgnoreCase(serviceToken)) {
             throw new InvalidParameterException("Can't find plugin with specified token!");
         } else {
-            SecurityUser currentUser = (SecurityUser) ((Authentication) session.getPrincipal()).getPrincipal();
+            //SecurityUser currentUser = (SecurityUser) ((Authentication) session.getPrincipal()).getPrincipal();
+            SecurityUser currentUser=new SecurityUser();
             return new TelemetryWebSocketSessionRef(UUID.randomUUID().toString(), currentUser, session.getLocalAddress(), session.getRemoteAddress());
         }
     }

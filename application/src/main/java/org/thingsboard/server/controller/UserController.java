@@ -22,7 +22,6 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,11 +43,9 @@ import org.thingsboard.server.common.data.page.TextPageData;
 import org.thingsboard.server.common.data.page.TextPageLink;
 import org.thingsboard.server.common.data.security.Authority;
 import org.thingsboard.server.common.data.security.UserCredentials;
-import org.thingsboard.server.service.security.auth.jwt.RefreshTokenRepository;
 import org.thingsboard.server.service.security.model.SecurityUser;
 import org.thingsboard.server.service.security.model.UserPrincipal;
 import org.thingsboard.server.service.security.model.token.JwtToken;
-import org.thingsboard.server.service.security.model.token.JwtTokenFactory;
 import org.thingsboard.server.service.security.permission.Operation;
 import org.thingsboard.server.service.security.permission.Resource;
 
@@ -68,15 +65,15 @@ public class UserController extends BaseController {
 
     @Autowired
     private MailService mailService;
+//
+//    @Autowired
+//    private JwtTokenFactory tokenFactory;
 
-    @Autowired
-    private JwtTokenFactory tokenFactory;
-
-    @Autowired
-    private RefreshTokenRepository refreshTokenRepository;
+//    @Autowired
+//    private RefreshTokenRepository refreshTokenRepository;
 
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
     @ResponseBody
     public User getUserById(@PathVariable(USER_ID) String strUserId) throws ThingsboardException {
@@ -89,14 +86,14 @@ public class UserController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
     @RequestMapping(value = "/user/tokenAccessEnabled", method = RequestMethod.GET)
     @ResponseBody
     public boolean isUserTokenAccessEnabled() {
         return userTokenAccessEnabled;
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
     @RequestMapping(value = "/user/{userId}/token", method = RequestMethod.GET)
     @ResponseBody
     public JsonNode getUserToken(@PathVariable(USER_ID) String strUserId) throws ThingsboardException {
@@ -112,19 +109,19 @@ public class UserController extends BaseController {
             UserPrincipal principal = new UserPrincipal(UserPrincipal.Type.USER_NAME, user.getEmail());
             UserCredentials credentials = userService.findUserCredentialsByUserId(authUser.getTenantId(), userId);
             SecurityUser securityUser = new SecurityUser(user, credentials.isEnabled(), principal);
-            JwtToken accessToken = tokenFactory.createAccessJwtToken(securityUser);
-            JwtToken refreshToken = refreshTokenRepository.requestRefreshToken(securityUser);
+            //JwtToken accessToken = tokenFactory.createAccessJwtToken(securityUser);
+            //JwtToken refreshToken = refreshTokenRepository.requestRefreshToken(securityUser);
             ObjectMapper objectMapper = new ObjectMapper();
             ObjectNode tokenObject = objectMapper.createObjectNode();
-            tokenObject.put("token", accessToken.getToken());
-            tokenObject.put("refreshToken", refreshToken.getToken());
+            //tokenObject.put("token", accessToken.getToken());
+            //tokenObject.put("refreshToken", refreshToken.getToken());
             return tokenObject;
         } catch (Exception e) {
             throw handleException(e);
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     @ResponseBody
     public User saveUser(@RequestBody User user,
@@ -172,7 +169,7 @@ public class UserController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
     @RequestMapping(value = "/user/sendActivationMail", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public void sendActivationEmail(
@@ -198,7 +195,7 @@ public class UserController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
     @RequestMapping(value = "/user/{userId}/activationLink", method = RequestMethod.GET, produces = "text/plain")
     @ResponseBody
     public String getActivationLink(
@@ -223,7 +220,7 @@ public class UserController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteUser(@PathVariable(USER_ID) String strUserId) throws ThingsboardException {
@@ -246,7 +243,7 @@ public class UserController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('SYS_ADMIN')")
+//    @PreAuthorize("hasAuthority('SYS_ADMIN')")
     @RequestMapping(value = "/tenant/{tenantId}/users", params = { "limit" }, method = RequestMethod.GET)
     @ResponseBody
     public TextPageData<User> getTenantAdmins(
@@ -265,7 +262,7 @@ public class UserController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+//    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/customer/{customerId}/users", params = { "limit" }, method = RequestMethod.GET)
     @ResponseBody
     public TextPageData<User> getCustomerUsers(
@@ -286,7 +283,7 @@ public class UserController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
     @RequestMapping(value = "/user/{userId}/userCredentialsEnabled", method = RequestMethod.POST)
     @ResponseBody
     public void setUserCredentialsEnabled(@PathVariable(USER_ID) String strUserId,

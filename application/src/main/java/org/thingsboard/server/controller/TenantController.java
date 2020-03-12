@@ -18,7 +18,6 @@ package org.thingsboard.server.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,7 +48,7 @@ public class TenantController extends BaseController {
     @Autowired
     private TenantService tenantService;
 
-    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
+//    @PreAuthorize("hasAnyAuthority('SYS_ADMIN', 'TENANT_ADMIN')")
     @RequestMapping(value = "/tenant/{tenantId}", method = RequestMethod.GET)
     @ResponseBody
     public Tenant getTenantById(@PathVariable("tenantId") String strTenantId) throws ThingsboardException {
@@ -65,7 +64,7 @@ public class TenantController extends BaseController {
     /**
      * 新增租户
      * */
-    @PreAuthorize("hasAuthority('SYS_ADMIN')")
+//    @PreAuthorize("hasAuthority('SYS_ADMIN')")
     @RequestMapping(value = "/tenant", method = RequestMethod.POST)
     @ResponseBody
     public Tenant saveTenant(@RequestBody Tenant tenant) throws ThingsboardException {
@@ -87,7 +86,7 @@ public class TenantController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('SYS_ADMIN')")
+//    @PreAuthorize("hasAuthority('SYS_ADMIN')")
     @RequestMapping(value = "/tenant/{tenantId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.OK)
     public void deleteTenant(@PathVariable("tenantId") String strTenantId) throws ThingsboardException {
@@ -103,7 +102,7 @@ public class TenantController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('SYS_ADMIN')")
+//    @PreAuthorize("hasAuthority('SYS_ADMIN')")
     @RequestMapping(value = "/tenants", params = {"limit"}, method = RequestMethod.GET)
     @ResponseBody
     public TextPageData<Tenant> getTenants(@RequestParam int limit,

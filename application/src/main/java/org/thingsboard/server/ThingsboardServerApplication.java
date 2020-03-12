@@ -15,11 +15,15 @@
  */
 package org.thingsboard.server;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.thingsboard.server.config.AuditLogLevelProperties;
+import org.thingsboard.server.dao.audit.AuditLogLevelFilter;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Arrays;
@@ -46,5 +50,9 @@ public class ThingsboardServerApplication {
             return modifiedArgs;
         }
         return args;
+    }
+    @Bean
+    public AuditLogLevelFilter auditLogLevelFilter(@Autowired AuditLogLevelProperties auditLogLevelProperties) {
+        return new AuditLogLevelFilter(auditLogLevelProperties.getMask());
     }
 }
