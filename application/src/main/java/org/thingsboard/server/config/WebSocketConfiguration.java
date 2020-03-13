@@ -51,11 +51,12 @@ public class WebSocketConfiguration implements WebSocketConfigurer {
         return container;
     }
 
+    //.addInterceptors 权限验证，根据自己具业务验证权限
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(wsHandler(), WS_PLUGIN_MAPPING).setAllowedOrigins("*")
                 .addInterceptors(new HttpSessionHandshakeInterceptor(), new HandshakeInterceptor() {
-
+                    //websocket建立之前的操作 这里只有登陆了才能继续走
                     @Override
                     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
                                                    Map<String, Object> attributes) throws Exception {

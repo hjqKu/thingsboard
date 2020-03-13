@@ -101,7 +101,7 @@ public class TbWebSocketHandler extends TextWebSocketHandler implements Telemetr
             log.warn("IO error", e);
         }
     }
-
+    //建立连接后
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         super.afterConnectionEstablished(session);
@@ -130,7 +130,7 @@ public class TbWebSocketHandler extends TextWebSocketHandler implements Telemetr
             session.close(CloseStatus.SERVER_ERROR.withReason(e.getMessage()));
         }
     }
-
+    //服务器连接异常
     @Override
     public void handleTransportError(WebSocketSession session, Throwable tError) throws Exception {
         super.handleTransportError(session, tError);
@@ -142,7 +142,7 @@ public class TbWebSocketHandler extends TextWebSocketHandler implements Telemetr
         }
         log.trace("[{}] Session transport error", session.getId(), tError);
     }
-
+    //服务器连接关闭
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception {
         super.afterConnectionClosed(session, closeStatus);
@@ -315,7 +315,7 @@ public class TbWebSocketHandler extends TextWebSocketHandler implements Telemetr
                 }
             }
         }
-
+        //判断是否是客户..
         if (sessionRef.getSecurityCtx().isCustomerUser()) {
             if (maxSessionsPerCustomer > 0) {
                 Set<String> customerSessions = customerSessionsMap.computeIfAbsent(sessionRef.getSecurityCtx().getCustomerId(), id -> ConcurrentHashMap.newKeySet());
