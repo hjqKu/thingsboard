@@ -239,7 +239,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>org.thingsboard.server.coap.ThingsboardCoapTransportApplication</mainClass>
+                    <mainClass>com.loit.coap.ThingsboardCoapTransportApplication</mainClass>
                     <classifier>boot</classifier>
                     <layout>ZIP</layout>
                     <executable>true</executable>

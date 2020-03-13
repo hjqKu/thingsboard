@@ -18,9 +18,9 @@ package org.thingsboard.rule.engine.filter;
 import lombok.extern.slf4j.Slf4j;
 import org.thingsboard.rule.engine.api.util.TbNodeUtils;
 import org.thingsboard.rule.engine.api.*;
-import org.thingsboard.server.common.data.EntityType;
-import org.thingsboard.server.common.data.plugin.ComponentType;
-import org.thingsboard.server.common.msg.TbMsg;
+import com.loit.common.data.EntityType;
+import com.loit.common.data.plugin.ComponentType;
+import com.loit.common.msg.TbMsg;
 
 @Slf4j
 @RuleNode(

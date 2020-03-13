@@ -19,6 +19,8 @@ import com.datastax.driver.core.utils.UUIDs;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.google.common.util.concurrent.Futures;
+import com.loit.common.data.id.*;
+import com.loit.common.data.kv.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,18 +30,16 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.api.TbNodeConfiguration;
 import org.thingsboard.rule.engine.api.TbNodeException;
-import org.thingsboard.server.common.data.Device;
-import org.thingsboard.server.common.data.User;
-import org.thingsboard.server.common.data.asset.Asset;
-import org.thingsboard.server.common.data.id.*;
-import org.thingsboard.server.common.data.kv.*;
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.common.msg.TbMsgMetaData;
-import org.thingsboard.server.dao.asset.AssetService;
-import org.thingsboard.server.dao.attributes.AttributesService;
-import org.thingsboard.server.dao.device.DeviceService;
-import org.thingsboard.server.dao.timeseries.TimeseriesService;
-import org.thingsboard.server.dao.user.UserService;
+import com.loit.common.data.Device;
+import com.loit.common.data.User;
+import com.loit.common.data.asset.Asset;
+import com.loit.common.msg.TbMsg;
+import com.loit.common.msg.TbMsgMetaData;
+import com.loit.dao.asset.AssetService;
+import com.loit.dao.attributes.AttributesService;
+import com.loit.dao.device.DeviceService;
+import com.loit.dao.timeseries.TimeseriesService;
+import com.loit.dao.user.UserService;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -55,7 +55,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.thingsboard.rule.engine.api.TbRelationTypes.FAILURE;
 import static org.thingsboard.rule.engine.api.TbRelationTypes.SUCCESS;
-import static org.thingsboard.server.common.data.DataConstants.SERVER_SCOPE;
+import static com.loit.common.data.DataConstants.SERVER_SCOPE;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TbGetCustomerAttributeNodeTest {

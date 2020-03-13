@@ -18,10 +18,10 @@ package org.thingsboard.rule.engine.util;
 import com.google.common.util.concurrent.AsyncFunction;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+import com.loit.common.data.id.*;
 import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.api.TbNodeException;
-import org.thingsboard.server.common.data.HasCustomerId;
-import org.thingsboard.server.common.data.id.*;
+import com.loit.common.data.HasCustomerId;
 
 public class EntitiesCustomerIdAsyncLoader {
 

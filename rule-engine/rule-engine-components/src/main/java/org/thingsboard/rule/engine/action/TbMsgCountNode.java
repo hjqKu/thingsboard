@@ -21,11 +21,11 @@ import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import org.thingsboard.rule.engine.api.*;
 import org.thingsboard.rule.engine.api.util.TbNodeUtils;
-import org.thingsboard.server.common.data.plugin.ComponentType;
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.common.msg.TbMsgDataType;
-import org.thingsboard.server.common.msg.TbMsgMetaData;
-import org.thingsboard.server.common.msg.session.SessionMsgType;
+import com.loit.common.data.plugin.ComponentType;
+import com.loit.common.msg.TbMsg;
+import com.loit.common.msg.TbMsgDataType;
+import com.loit.common.msg.TbMsgMetaData;
+import com.loit.common.msg.session.SessionMsgType;
 
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;

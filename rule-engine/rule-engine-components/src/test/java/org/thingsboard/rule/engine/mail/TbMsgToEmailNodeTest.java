@@ -25,12 +25,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.api.TbNodeConfiguration;
 import org.thingsboard.rule.engine.api.TbNodeException;
-import org.thingsboard.server.common.data.id.DeviceId;
-import org.thingsboard.server.common.data.id.EntityId;
-import org.thingsboard.server.common.data.id.RuleChainId;
-import org.thingsboard.server.common.data.id.RuleNodeId;
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.common.msg.TbMsgMetaData;
+import com.loit.common.data.id.DeviceId;
+import com.loit.common.data.id.EntityId;
+import com.loit.common.data.id.RuleChainId;
+import com.loit.common.data.id.RuleNodeId;
+import com.loit.common.msg.TbMsg;
+import com.loit.common.msg.TbMsgMetaData;
 
 import java.io.IOException;
 

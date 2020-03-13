@@ -18,11 +18,11 @@ package org.thingsboard.rule.engine.api.msg;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
-import org.thingsboard.server.common.data.id.DeviceId;
-import org.thingsboard.server.common.data.id.TenantId;
-import org.thingsboard.server.common.data.kv.AttributeKey;
-import org.thingsboard.server.common.data.kv.AttributeKvEntry;
-import org.thingsboard.server.common.msg.MsgType;
+import com.loit.common.data.id.DeviceId;
+import com.loit.common.data.id.TenantId;
+import com.loit.common.data.kv.AttributeKey;
+import com.loit.common.data.kv.AttributeKvEntry;
+import com.loit.common.msg.MsgType;
 
 import java.util.List;
 import java.util.Set;

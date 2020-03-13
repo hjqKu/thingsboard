@@ -17,7 +17,7 @@ package org.thingsboard.rule.engine.api;
 
 import lombok.Builder;
 import lombok.Data;
-import org.thingsboard.server.common.data.id.DeviceId;
+import com.loit.common.data.id.DeviceId;
 
 import java.util.Optional;
 

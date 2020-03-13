@@ -16,8 +16,8 @@
 package org.thingsboard.rule.engine.util;
 
 import lombok.Data;
-import org.thingsboard.server.common.data.EntityType;
-import org.thingsboard.server.common.data.id.EntityId;
+import com.loit.common.data.EntityType;
+import com.loit.common.data.id.EntityId;
 
 @Data
 public class EntityContainer {

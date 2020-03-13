@@ -17,10 +17,9 @@ package org.thingsboard.rule.engine.filter;
 
 import lombok.Data;
 import org.thingsboard.rule.engine.api.NodeConfiguration;
-import org.thingsboard.server.common.msg.session.SessionMsgType;
+import com.loit.common.msg.session.SessionMsgType;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 /**

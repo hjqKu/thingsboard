@@ -19,16 +19,16 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.api.TbNodeException;
-import org.thingsboard.server.common.data.BaseData;
-import org.thingsboard.server.common.data.EntityFieldsData;
-import org.thingsboard.server.common.data.alarm.AlarmId;
-import org.thingsboard.server.common.data.id.AssetId;
-import org.thingsboard.server.common.data.id.CustomerId;
-import org.thingsboard.server.common.data.id.DeviceId;
-import org.thingsboard.server.common.data.id.EntityId;
-import org.thingsboard.server.common.data.id.RuleChainId;
-import org.thingsboard.server.common.data.id.TenantId;
-import org.thingsboard.server.common.data.id.UserId;
+import com.loit.common.data.BaseData;
+import com.loit.common.data.EntityFieldsData;
+import com.loit.common.data.alarm.AlarmId;
+import com.loit.common.data.id.AssetId;
+import com.loit.common.data.id.CustomerId;
+import com.loit.common.data.id.DeviceId;
+import com.loit.common.data.id.EntityId;
+import com.loit.common.data.id.RuleChainId;
+import com.loit.common.data.id.TenantId;
+import com.loit.common.data.id.UserId;
 
 import java.util.function.Function;
 

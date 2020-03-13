@@ -29,15 +29,15 @@ import org.thingsboard.common.util.ListeningExecutor;
 import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.api.TbNodeConfiguration;
 import org.thingsboard.rule.engine.api.TbNodeException;
-import org.thingsboard.server.common.data.asset.Asset;
-import org.thingsboard.server.common.data.id.AssetId;
-import org.thingsboard.server.common.data.id.CustomerId;
-import org.thingsboard.server.common.data.id.EntityId;
-import org.thingsboard.server.common.data.id.RuleChainId;
-import org.thingsboard.server.common.data.id.RuleNodeId;
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.common.msg.TbMsgMetaData;
-import org.thingsboard.server.dao.asset.AssetService;
+import com.loit.common.data.asset.Asset;
+import com.loit.common.data.id.AssetId;
+import com.loit.common.data.id.CustomerId;
+import com.loit.common.data.id.EntityId;
+import com.loit.common.data.id.RuleChainId;
+import com.loit.common.data.id.RuleNodeId;
+import com.loit.common.msg.TbMsg;
+import com.loit.common.msg.TbMsgMetaData;
+import com.loit.dao.asset.AssetService;
 
 import java.util.concurrent.Callable;
 

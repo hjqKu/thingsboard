@@ -19,9 +19,9 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.api.TbNodeException;
-import org.thingsboard.server.common.data.alarm.Alarm;
-import org.thingsboard.server.common.data.alarm.AlarmId;
-import org.thingsboard.server.common.data.id.EntityId;
+import com.loit.common.data.alarm.Alarm;
+import com.loit.common.data.alarm.AlarmId;
+import com.loit.common.data.id.EntityId;
 
 public class EntitiesAlarmOriginatorIdAsyncLoader {
 

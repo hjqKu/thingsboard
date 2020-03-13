@@ -31,15 +31,15 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 import org.thingsboard.common.util.ListeningExecutor;
 import org.thingsboard.rule.engine.api.*;
-import org.thingsboard.server.common.data.alarm.Alarm;
-import org.thingsboard.server.common.data.id.DeviceId;
-import org.thingsboard.server.common.data.id.EntityId;
-import org.thingsboard.server.common.data.id.RuleChainId;
-import org.thingsboard.server.common.data.id.RuleNodeId;
-import org.thingsboard.server.common.data.id.TenantId;
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.common.msg.TbMsgMetaData;
-import org.thingsboard.server.dao.alarm.AlarmService;
+import com.loit.common.data.alarm.Alarm;
+import com.loit.common.data.id.DeviceId;
+import com.loit.common.data.id.EntityId;
+import com.loit.common.data.id.RuleChainId;
+import com.loit.common.data.id.RuleNodeId;
+import com.loit.common.data.id.TenantId;
+import com.loit.common.msg.TbMsg;
+import com.loit.common.msg.TbMsgMetaData;
+import com.loit.dao.alarm.AlarmService;
 
 import javax.script.ScriptException;
 import java.io.IOException;
@@ -49,9 +49,8 @@ import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 import static org.thingsboard.rule.engine.action.TbAbstractAlarmNode.*;
-import static org.thingsboard.server.common.data.alarm.AlarmSeverity.CRITICAL;
-import static org.thingsboard.server.common.data.alarm.AlarmSeverity.WARNING;
-import static org.thingsboard.server.common.data.alarm.AlarmStatus.*;
+import static com.loit.common.data.alarm.AlarmSeverity.CRITICAL;
+import static com.loit.common.data.alarm.AlarmSeverity.WARNING;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TbAlarmNodeTest {

@@ -18,10 +18,10 @@ package org.thingsboard.rule.engine.filter;
 import lombok.extern.slf4j.Slf4j;
 import org.thingsboard.rule.engine.api.util.TbNodeUtils;
 import org.thingsboard.rule.engine.api.*;
-import org.thingsboard.server.common.data.DataConstants;
-import org.thingsboard.server.common.data.plugin.ComponentType;
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.common.msg.session.SessionMsgType;
+import com.loit.common.data.DataConstants;
+import com.loit.common.data.plugin.ComponentType;
+import com.loit.common.msg.TbMsg;
+import com.loit.common.msg.session.SessionMsgType;
 
 @Slf4j
 @RuleNode(

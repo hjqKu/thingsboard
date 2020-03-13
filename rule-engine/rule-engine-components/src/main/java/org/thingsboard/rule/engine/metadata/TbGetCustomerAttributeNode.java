@@ -19,9 +19,9 @@ import com.google.common.util.concurrent.ListenableFuture;
 import org.thingsboard.rule.engine.api.RuleNode;
 import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.util.EntitiesCustomerIdAsyncLoader;
-import org.thingsboard.server.common.data.id.CustomerId;
-import org.thingsboard.server.common.data.id.EntityId;
-import org.thingsboard.server.common.data.plugin.ComponentType;
+import com.loit.common.data.id.CustomerId;
+import com.loit.common.data.id.EntityId;
+import com.loit.common.data.plugin.ComponentType;
 
 @RuleNode(
         type = ComponentType.ENRICHMENT,

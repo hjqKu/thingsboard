@@ -16,14 +16,9 @@
 package org.thingsboard.rule.engine.api.msg;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.ToString;
-import org.thingsboard.server.common.data.id.DeviceId;
-import org.thingsboard.server.common.data.id.TenantId;
-import org.thingsboard.server.common.data.kv.AttributeKey;
-import org.thingsboard.server.common.msg.MsgType;
-
-import java.util.Set;
+import com.loit.common.data.id.DeviceId;
+import com.loit.common.data.id.TenantId;
+import com.loit.common.msg.MsgType;
 
 /**
  * @author Andrew Shvayka

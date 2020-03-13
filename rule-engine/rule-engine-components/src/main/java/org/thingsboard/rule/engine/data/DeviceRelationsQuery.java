@@ -16,7 +16,7 @@
 package org.thingsboard.rule.engine.data;
 
 import lombok.Data;
-import org.thingsboard.server.common.data.relation.EntitySearchDirection;
+import com.loit.common.data.relation.EntitySearchDirection;
 
 import java.util.List;
 

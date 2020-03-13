@@ -18,7 +18,7 @@ package org.thingsboard.rule.engine.telemetry;
 import com.google.common.util.concurrent.FutureCallback;
 import lombok.Data;
 import org.thingsboard.rule.engine.api.TbContext;
-import org.thingsboard.server.common.msg.TbMsg;
+import com.loit.common.msg.TbMsg;
 
 import javax.annotation.Nullable;
 

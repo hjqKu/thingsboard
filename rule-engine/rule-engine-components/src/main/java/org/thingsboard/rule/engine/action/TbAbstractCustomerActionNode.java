@@ -28,10 +28,10 @@ import org.thingsboard.rule.engine.api.TbNode;
 import org.thingsboard.rule.engine.api.TbNodeConfiguration;
 import org.thingsboard.rule.engine.api.TbNodeException;
 import org.thingsboard.rule.engine.api.util.TbNodeUtils;
-import org.thingsboard.server.common.data.Customer;
-import org.thingsboard.server.common.data.id.CustomerId;
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.dao.customer.CustomerService;
+import com.loit.common.data.Customer;
+import com.loit.common.data.id.CustomerId;
+import com.loit.common.msg.TbMsg;
+import com.loit.dao.customer.CustomerService;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;

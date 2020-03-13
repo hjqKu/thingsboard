@@ -28,9 +28,9 @@ import com.google.pubsub.v1.PubsubMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.thingsboard.rule.engine.api.*;
 import org.thingsboard.rule.engine.api.util.TbNodeUtils;
-import org.thingsboard.server.common.data.plugin.ComponentType;
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.common.msg.TbMsgMetaData;
+import com.loit.common.data.plugin.ComponentType;
+import com.loit.common.msg.TbMsg;
+import com.loit.common.msg.TbMsgMetaData;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

@@ -18,9 +18,9 @@ package org.thingsboard.rule.engine.transform;
 import lombok.Data;
 import org.thingsboard.rule.engine.api.NodeConfiguration;
 import org.thingsboard.rule.engine.data.RelationsQuery;
-import org.thingsboard.server.common.data.relation.EntityRelation;
-import org.thingsboard.server.common.data.relation.EntitySearchDirection;
-import org.thingsboard.server.common.data.relation.EntityTypeFilter;
+import com.loit.common.data.relation.EntityRelation;
+import com.loit.common.data.relation.EntitySearchDirection;
+import com.loit.common.data.relation.EntityTypeFilter;
 
 import java.util.Collections;
 

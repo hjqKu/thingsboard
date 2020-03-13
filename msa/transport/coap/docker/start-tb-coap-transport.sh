@@ -25,7 +25,7 @@ export LOADER_PATH=/config,${LOADER_PATH}
 
 echo "Starting '${project.name}' ..."
 
-exec java -cp ${jarfile} $JAVA_OPTS -Dloader.main=org.thingsboard.server.coap.ThingsboardCoapTransportApplication \
+exec java -cp ${jarfile} $JAVA_OPTS -Dloader.main=ThingsboardCoapTransportApplication \
                     -Dspring.jpa.hibernate.ddl-auto=none \
                     -Dlogging.config=/config/logback.xml \
                     org.springframework.boot.loader.PropertiesLauncher

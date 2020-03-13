@@ -17,7 +17,7 @@ package org.thingsboard.rule.engine.action;
 
 import lombok.Data;
 import org.thingsboard.rule.engine.api.NodeConfiguration;
-import org.thingsboard.server.common.data.alarm.AlarmSeverity;
+import com.loit.common.data.alarm.AlarmSeverity;
 
 import java.util.Collections;
 import java.util.List;

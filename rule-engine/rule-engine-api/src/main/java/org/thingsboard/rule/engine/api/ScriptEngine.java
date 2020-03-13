@@ -17,7 +17,7 @@ package org.thingsboard.rule.engine.api;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.util.concurrent.ListenableFuture;
-import org.thingsboard.server.common.msg.TbMsg;
+import com.loit.common.msg.TbMsg;
 
 import javax.script.ScriptException;
 import java.util.Set;

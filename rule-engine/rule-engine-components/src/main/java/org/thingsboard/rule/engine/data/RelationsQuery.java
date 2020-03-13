@@ -16,8 +16,8 @@
 package org.thingsboard.rule.engine.data;
 
 import lombok.Data;
-import org.thingsboard.server.common.data.relation.EntitySearchDirection;
-import org.thingsboard.server.common.data.relation.EntityTypeFilter;
+import com.loit.common.data.relation.EntitySearchDirection;
+import com.loit.common.data.relation.EntityTypeFilter;
 
 import java.util.List;
 

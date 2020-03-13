@@ -1,0 +1,44 @@
+package com.loit.dao.model.sql;
+
+import com.loit.common.data.Banji;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.TypeDef;
+import com.loit.dao.model.BaseSqlEntity;
+import com.loit.dao.model.SearchTextEntity;
+import com.loit.dao.util.mapping.JsonStringType;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * @author hanjinqun
+ * @date 2020/3/4
+ */
+@Data
+@EqualsAndHashCode(callSuper = true)
+@Entity
+@TypeDef(name = "json", typeClass = JsonStringType.class)
+@Table(name = "banji")
+public class BanjiEntity extends BaseSqlEntity<Banji>implements SearchTextEntity<Banji> {
+    @Column(name = "name")
+    private String name;
+    @Column(name = "tag")
+    private String tag;
+
+    @Override
+    public String getSearchTextSource() {
+        return null;
+    }
+
+    @Override
+    public void setSearchText(String searchText) {
+
+    }
+
+    @Override
+    public Banji toData() {
+        return null;
+    }
+}

@@ -19,7 +19,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.ListOperations;
 import org.thingsboard.rule.engine.api.TbContext;
-import org.thingsboard.server.common.msg.TbMsg;
+import com.loit.common.msg.TbMsg;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

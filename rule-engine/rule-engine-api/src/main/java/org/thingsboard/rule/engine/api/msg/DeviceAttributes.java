@@ -15,9 +15,9 @@
  */
 package org.thingsboard.rule.engine.api.msg;
 
-import org.thingsboard.server.common.data.DataConstants;
-import org.thingsboard.server.common.data.kv.AttributeKey;
-import org.thingsboard.server.common.data.kv.AttributeKvEntry;
+import com.loit.common.data.DataConstants;
+import com.loit.common.data.kv.AttributeKey;
+import com.loit.common.data.kv.AttributeKvEntry;
 
 import java.util.*;
 

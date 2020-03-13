@@ -15,9 +15,9 @@
  */
 package org.thingsboard.rule.engine.api.msg;
 
-import org.thingsboard.server.common.msg.TbActorMsg;
-import org.thingsboard.server.common.msg.aware.DeviceAwareMsg;
-import org.thingsboard.server.common.msg.aware.TenantAwareMsg;
+import com.loit.common.msg.TbActorMsg;
+import com.loit.common.msg.aware.DeviceAwareMsg;
+import com.loit.common.msg.aware.TenantAwareMsg;
 
 import java.io.Serializable;
 

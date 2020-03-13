@@ -24,10 +24,10 @@ import org.thingsboard.rule.engine.api.RuleNode;
 import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.api.TbNodeConfiguration;
 import org.thingsboard.rule.engine.api.TbNodeException;
-import org.thingsboard.server.common.data.alarm.Alarm;
-import org.thingsboard.server.common.data.alarm.AlarmStatus;
-import org.thingsboard.server.common.data.plugin.ComponentType;
-import org.thingsboard.server.common.msg.TbMsg;
+import com.loit.common.data.alarm.Alarm;
+import com.loit.common.data.alarm.AlarmStatus;
+import com.loit.common.data.plugin.ComponentType;
+import com.loit.common.msg.TbMsg;
 
 @Slf4j
 @RuleNode(

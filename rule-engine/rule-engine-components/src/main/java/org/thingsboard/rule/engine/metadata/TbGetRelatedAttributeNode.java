@@ -20,8 +20,8 @@ import org.thingsboard.rule.engine.api.util.TbNodeUtils;
 import org.thingsboard.rule.engine.api.*;
 import org.thingsboard.rule.engine.util.EntitiesRelatedEntityIdAsyncLoader;
 
-import org.thingsboard.server.common.data.id.EntityId;
-import org.thingsboard.server.common.data.plugin.ComponentType;
+import com.loit.common.data.id.EntityId;
+import com.loit.common.data.plugin.ComponentType;
 
 @RuleNode(
         type = ComponentType.ENRICHMENT,

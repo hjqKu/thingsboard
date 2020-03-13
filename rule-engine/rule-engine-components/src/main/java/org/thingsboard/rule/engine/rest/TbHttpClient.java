@@ -34,8 +34,8 @@ import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.api.TbNodeException;
 import org.thingsboard.rule.engine.api.TbRelationTypes;
 import org.thingsboard.rule.engine.api.util.TbNodeUtils;
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.common.msg.TbMsgMetaData;
+import com.loit.common.msg.TbMsg;
+import com.loit.common.msg.TbMsgMetaData;
 
 import javax.net.ssl.SSLException;
 import java.util.Deque;

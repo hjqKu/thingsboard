@@ -33,11 +33,11 @@ import org.thingsboard.rule.engine.api.TbNode;
 import org.thingsboard.rule.engine.api.TbNodeConfiguration;
 import org.thingsboard.rule.engine.api.TbNodeException;
 import org.thingsboard.rule.engine.api.util.TbNodeUtils;
-import org.thingsboard.server.common.data.kv.BaseReadTsKvQuery;
-import org.thingsboard.server.common.data.kv.ReadTsKvQuery;
-import org.thingsboard.server.common.data.kv.TsKvEntry;
-import org.thingsboard.server.common.data.plugin.ComponentType;
-import org.thingsboard.server.common.msg.TbMsg;
+import com.loit.common.data.kv.BaseReadTsKvQuery;
+import com.loit.common.data.kv.ReadTsKvQuery;
+import com.loit.common.data.kv.TsKvEntry;
+import com.loit.common.data.plugin.ComponentType;
+import com.loit.common.msg.TbMsg;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -48,7 +48,7 @@ import static org.thingsboard.rule.engine.api.TbRelationTypes.SUCCESS;
 import static org.thingsboard.rule.engine.metadata.TbGetTelemetryNodeConfiguration.FETCH_MODE_ALL;
 import static org.thingsboard.rule.engine.metadata.TbGetTelemetryNodeConfiguration.FETCH_MODE_FIRST;
 import static org.thingsboard.rule.engine.metadata.TbGetTelemetryNodeConfiguration.MAX_FETCH_SIZE;
-import static org.thingsboard.server.common.data.kv.Aggregation.NONE;
+import static com.loit.common.data.kv.Aggregation.NONE;
 
 /**
  * Created by mshvayka on 04.09.18.

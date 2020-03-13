@@ -15,8 +15,8 @@
  */
 package org.thingsboard.rule.engine.api;
 
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.common.msg.cluster.ClusterEventMsg;
+import com.loit.common.msg.TbMsg;
+import com.loit.common.msg.cluster.ClusterEventMsg;
 
 import java.util.concurrent.ExecutionException;
 

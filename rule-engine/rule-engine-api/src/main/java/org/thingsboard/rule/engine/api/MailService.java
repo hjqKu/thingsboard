@@ -16,7 +16,7 @@
 package org.thingsboard.rule.engine.api;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.thingsboard.server.common.data.exception.ThingsboardException;
+import com.loit.common.data.exception.ThingsboardException;
 
 import javax.mail.MessagingException;
 

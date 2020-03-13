@@ -24,13 +24,13 @@ import org.thingsboard.rule.engine.api.TbNode;
 import org.thingsboard.rule.engine.api.TbNodeConfiguration;
 import org.thingsboard.rule.engine.api.TbNodeException;
 import org.thingsboard.rule.engine.api.util.TbNodeUtils;
-import org.thingsboard.server.common.data.id.EntityId;
-import org.thingsboard.server.common.data.id.EntityIdFactory;
-import org.thingsboard.server.common.data.plugin.ComponentType;
-import org.thingsboard.server.common.data.relation.EntityRelation;
-import org.thingsboard.server.common.data.relation.EntitySearchDirection;
-import org.thingsboard.server.common.data.relation.RelationTypeGroup;
-import org.thingsboard.server.common.msg.TbMsg;
+import com.loit.common.data.id.EntityId;
+import com.loit.common.data.id.EntityIdFactory;
+import com.loit.common.data.plugin.ComponentType;
+import com.loit.common.data.relation.EntityRelation;
+import com.loit.common.data.relation.EntitySearchDirection;
+import com.loit.common.data.relation.RelationTypeGroup;
+import com.loit.common.msg.TbMsg;
 
 import java.util.List;
 

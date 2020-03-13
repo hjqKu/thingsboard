@@ -30,9 +30,9 @@ import org.thingsboard.rule.engine.api.TbNode;
 import org.thingsboard.rule.engine.api.TbNodeConfiguration;
 import org.thingsboard.rule.engine.api.TbNodeException;
 import org.thingsboard.rule.engine.util.EntityDetails;
-import org.thingsboard.server.common.data.ContactBased;
-import org.thingsboard.server.common.msg.TbMsg;
-import org.thingsboard.server.common.msg.TbMsgMetaData;
+import com.loit.common.data.ContactBased;
+import com.loit.common.msg.TbMsg;
+import com.loit.common.msg.TbMsgMetaData;
 
 import java.lang.reflect.Type;
 import java.util.Map;

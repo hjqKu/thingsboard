@@ -15,18 +15,17 @@
  */
 package org.thingsboard.rule.engine.util;
 
-import com.google.common.util.concurrent.AsyncFunction;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import org.apache.commons.collections.CollectionUtils;
 import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.data.DeviceRelationsQuery;
-import org.thingsboard.server.common.data.Device;
-import org.thingsboard.server.common.data.device.DeviceSearchQuery;
-import org.thingsboard.server.common.data.id.DeviceId;
-import org.thingsboard.server.common.data.id.EntityId;
-import org.thingsboard.server.common.data.relation.RelationsSearchParameters;
-import org.thingsboard.server.dao.device.DeviceService;
+import com.loit.common.data.Device;
+import com.loit.common.data.device.DeviceSearchQuery;
+import com.loit.common.data.id.DeviceId;
+import com.loit.common.data.id.EntityId;
+import com.loit.common.data.relation.RelationsSearchParameters;
+import com.loit.dao.device.DeviceService;
 
 import java.util.List;
 

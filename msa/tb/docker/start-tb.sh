@@ -31,7 +31,7 @@ fi
 
 echo "Starting ThingsBoard ..."
 
-java -cp ${jarfile} $JAVA_OPTS -Dloader.main=org.thingsboard.server.ThingsboardServerApplication \
+java -cp ${jarfile} $JAVA_OPTS -Dloader.main=ThingsboardServerApplication \
                     -Dspring.jpa.hibernate.ddl-auto=none \
                     -Dlogging.config=${CONF_FOLDER}/logback.xml \
                     org.springframework.boot.loader.PropertiesLauncher

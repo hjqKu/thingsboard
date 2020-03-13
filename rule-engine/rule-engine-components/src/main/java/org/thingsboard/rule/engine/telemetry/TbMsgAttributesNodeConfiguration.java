@@ -17,7 +17,7 @@ package org.thingsboard.rule.engine.telemetry;
 
 import lombok.Data;
 import org.thingsboard.rule.engine.api.NodeConfiguration;
-import org.thingsboard.server.common.data.DataConstants;
+import com.loit.common.data.DataConstants;
 
 @Data
 public class TbMsgAttributesNodeConfiguration implements NodeConfiguration<TbMsgAttributesNodeConfiguration> {

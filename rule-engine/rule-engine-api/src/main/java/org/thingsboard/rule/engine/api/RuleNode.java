@@ -15,8 +15,8 @@
  */
 package org.thingsboard.rule.engine.api;
 
-import org.thingsboard.server.common.data.plugin.ComponentScope;
-import org.thingsboard.server.common.data.plugin.ComponentType;
+import com.loit.common.data.plugin.ComponentScope;
+import com.loit.common.data.plugin.ComponentType;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

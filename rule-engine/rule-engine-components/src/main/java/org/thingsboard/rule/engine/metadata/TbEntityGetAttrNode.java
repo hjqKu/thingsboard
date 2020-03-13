@@ -23,11 +23,11 @@ import org.thingsboard.rule.engine.api.TbContext;
 import org.thingsboard.rule.engine.api.TbNode;
 import org.thingsboard.rule.engine.api.TbNodeConfiguration;
 import org.thingsboard.rule.engine.api.TbNodeException;
-import org.thingsboard.server.common.data.id.EntityId;
-import org.thingsboard.server.common.data.kv.AttributeKvEntry;
-import org.thingsboard.server.common.data.kv.KvEntry;
-import org.thingsboard.server.common.data.kv.TsKvEntry;
-import org.thingsboard.server.common.msg.TbMsg;
+import com.loit.common.data.id.EntityId;
+import com.loit.common.data.kv.AttributeKvEntry;
+import com.loit.common.data.kv.KvEntry;
+import com.loit.common.data.kv.TsKvEntry;
+import com.loit.common.msg.TbMsg;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 import static org.thingsboard.common.util.DonAsynchron.withCallback;
 import static org.thingsboard.rule.engine.api.TbRelationTypes.FAILURE;
 import static org.thingsboard.rule.engine.api.TbRelationTypes.SUCCESS;
-import static org.thingsboard.server.common.data.DataConstants.SERVER_SCOPE;
+import static com.loit.common.data.DataConstants.SERVER_SCOPE;
 
 @Slf4j
 public abstract class TbEntityGetAttrNode<T extends EntityId> implements TbNode {
