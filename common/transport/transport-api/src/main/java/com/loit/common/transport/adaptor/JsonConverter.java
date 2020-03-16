@@ -333,16 +333,16 @@ public class JsonConverter {
 
     private static void addValueToJson(JsonObject json, String name, TransportProtos.KeyValueProto entry) {
         switch (entry.getType()) {
-            case TransportProtos.KeyValueType.BOOLEAN_V:
+            case BOOLEAN_V:
                 json.addProperty(name, entry.getBoolV());
                 break;
-            case TransportProtos.KeyValueType.STRING_V:
+            case STRING_V:
                 json.addProperty(name, entry.getStringV());
                 break;
-            case TransportProtos.KeyValueType.DOUBLE_V:
+            case DOUBLE_V:
                 json.addProperty(name, entry.getDoubleV());
                 break;
-            case TransportProtos.KeyValueType.LONG_V:
+            case LONG_V:
                 json.addProperty(name, entry.getLongV());
                 break;
         }
@@ -356,16 +356,16 @@ public class JsonConverter {
         return de -> {
             JsonPrimitive value;
             switch (de.getKv().getType()) {
-                case TransportProtos.KeyValueType.BOOLEAN_V:
+                case BOOLEAN_V:
                     value = new JsonPrimitive(de.getKv().getBoolV());
                     break;
-                case TransportProtos.KeyValueType.DOUBLE_V:
+                case DOUBLE_V:
                     value = new JsonPrimitive(de.getKv().getDoubleV());
                     break;
-                case TransportProtos.KeyValueType.LONG_V:
+                case LONG_V:
                     value = new JsonPrimitive(de.getKv().getLongV());
                     break;
-                case TransportProtos.KeyValueType.STRING_V:
+                case STRING_V:
                     value = new JsonPrimitive(de.getKv().getStringV());
                     break;
                 default:

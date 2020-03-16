@@ -18,7 +18,6 @@ package com.loit.transport.http;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.loit.common.data.id.DeviceId;
-import com.loit.gen.transport.TransportProtos;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
@@ -37,6 +36,7 @@ import com.loit.common.transport.TransportContext;
 import com.loit.common.transport.TransportService;
 import com.loit.common.transport.TransportServiceCallback;
 import com.loit.common.transport.adaptor.JsonConverter;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;

@@ -15,7 +15,7 @@
  */
 package com.loit.service.transport;
 
-import com.loit.gen.transport.TransportProtos;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.util.function.Consumer;
 

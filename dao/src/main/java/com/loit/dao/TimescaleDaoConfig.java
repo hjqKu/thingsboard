@@ -25,9 +25,9 @@ import com.loit.dao.util.TimescaleDBTsDao;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan("org.thingsboard.server.dao.sqlts.timescale")
-@EnableJpaRepositories("org.thingsboard.server.dao.sqlts.timescale")
-@EntityScan("org.thingsboard.server.dao.model.sqlts.timescale")
+@ComponentScan("com.loit.dao.sqlts.timescale")
+@EnableJpaRepositories("com.loit.dao.sqlts.timescale")
+@EntityScan("com.loit.dao.model.sqlts.timescale")
 @EnableTransactionManagement
 @TimescaleDBTsDao
 public class TimescaleDaoConfig {

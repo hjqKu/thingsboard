@@ -34,7 +34,7 @@
         </encoder>
     </appender>
 
-    <logger name="org.thingsboard.server" level="INFO" />
+    <logger name="com.loit" level="INFO" />
 
     <root level="INFO">
         <appender-ref ref="fileLogAppender"/>

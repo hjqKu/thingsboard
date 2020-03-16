@@ -35,7 +35,6 @@ import com.loit.common.data.security.DeviceCredentials;
 import com.loit.common.data.security.DeviceCredentialsType;
 import com.loit.dao.model.ModelConstants;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.thingsboard.server.common.data.*;
 import com.loit.common.data.id.CustomerId;
 import com.loit.common.data.id.DeviceCredentialsId;
 import com.loit.common.data.id.DeviceId;

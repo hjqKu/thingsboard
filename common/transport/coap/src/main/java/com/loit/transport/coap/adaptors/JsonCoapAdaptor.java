@@ -20,7 +20,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.loit.common.data.id.DeviceId;
-import com.loit.gen.transport.TransportProtos;
 import com.loit.transport.coap.CoapTransportResource;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.californium.core.coap.CoAP;
@@ -30,6 +29,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import com.loit.common.transport.adaptor.AdaptorException;
 import com.loit.common.transport.adaptor.JsonConverter;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.util.Arrays;
 import java.util.HashSet;

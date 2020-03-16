@@ -16,8 +16,8 @@
 package com.loit.service.encoding;
 
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import com.loit.common.msg.TbActorMsg;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 import java.util.Optional;
 

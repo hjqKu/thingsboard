@@ -17,7 +17,6 @@ package com.loit.transport.coap;
 
 import com.loit.common.data.security.DeviceTokenCredentials;
 import com.loit.common.msg.session.FeatureType;
-import com.loit.gen.transport.TransportProtos;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.californium.core.CoapResource;
 import org.eclipse.californium.core.coap.CoAP.ResponseCode;
@@ -35,7 +34,7 @@ import com.loit.common.transport.TransportContext;
 import com.loit.common.transport.TransportService;
 import com.loit.common.transport.TransportServiceCallback;
 import com.loit.common.transport.adaptor.AdaptorException;
-import com.loit.gen.transport.TransportProtos;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.lang.reflect.Field;
 import java.util.List;

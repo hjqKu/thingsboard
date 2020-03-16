@@ -15,8 +15,7 @@
  */
 package com.loit.service.cluster.rpc;
 
-import com.loit.gen.cluster.ClusterAPIProtos;
-import com.loit.gen.cluster.ClusterAPIProtos;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 /**
  * @author Andrew Shvayka

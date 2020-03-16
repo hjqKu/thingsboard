@@ -15,13 +15,12 @@
  */
 package com.loit.transport.coap.adaptors;
 
-import com.loit.gen.transport.TransportProtos;
 import com.loit.transport.coap.CoapTransportResource;
 import org.eclipse.californium.core.coap.Request;
 import org.eclipse.californium.core.coap.Response;
 import com.loit.common.transport.adaptor.AdaptorException;
-import com.loit.gen.transport.TransportProtos;
 import com.loit.transport.coap.CoapTransportResource;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.util.UUID;
 

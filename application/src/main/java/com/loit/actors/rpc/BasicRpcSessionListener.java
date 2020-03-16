@@ -16,13 +16,13 @@
 package com.loit.actors.rpc;
 
 import akka.actor.ActorRef;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import com.loit.service.cluster.rpc.GrpcSession;
 import com.loit.service.cluster.rpc.GrpcSessionListener;
 import com.loit.service.executors.ClusterRpcCallbackExecutorService;
 import lombok.extern.slf4j.Slf4j;
 import com.loit.actors.ActorSystemContext;
 import com.loit.actors.service.ActorService;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 /**
  * @author Andrew Shvayka

@@ -17,11 +17,11 @@ package com.loit.service.session;
 
 import com.loit.common.data.CacheConstants;
 import com.loit.common.data.id.DeviceId;
-import com.loit.gen.transport.TransportProtos;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.util.Collections;
 

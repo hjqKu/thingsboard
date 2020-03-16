@@ -15,8 +15,8 @@
  */
 package com.loit.service.transport;
 
-import com.loit.gen.transport.TransportProtos;
 import com.loit.kafka.TbKafkaEncoder;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 /**
  * Created by ashvayka on 05.10.18.

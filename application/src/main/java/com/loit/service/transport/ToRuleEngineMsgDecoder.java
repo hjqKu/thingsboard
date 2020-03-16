@@ -15,8 +15,8 @@
  */
 package com.loit.service.transport;
 
-import com.loit.gen.transport.TransportProtos;
 import com.loit.kafka.TbKafkaDecoder;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.io.IOException;
 

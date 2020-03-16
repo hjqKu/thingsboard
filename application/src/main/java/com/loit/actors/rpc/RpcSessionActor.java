@@ -19,7 +19,6 @@ import com.loit.actors.service.ContextAwareActor;
 import com.loit.actors.service.ContextBasedCreator;
 import com.loit.common.msg.TbActorMsg;
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import com.loit.service.cluster.rpc.GrpcSession;
 import com.loit.service.cluster.rpc.GrpcSessionListener;
 import io.grpc.ManagedChannel;
@@ -27,7 +26,8 @@ import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 import com.loit.actors.ActorSystemContext;
-import com.loit.gen.cluster.ClusterRpcServiceGrpc;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
+import org.thingsboard.server.gen.cluster.ClusterRpcServiceGrpc;
 
 import java.util.UUID;
 

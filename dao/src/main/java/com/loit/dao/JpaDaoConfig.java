@@ -29,9 +29,9 @@ import com.loit.dao.util.TimescaleDBTsDao;
  */
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan("org.thingsboard.server.dao.sql")
-@EnableJpaRepositories("org.thingsboard.server.dao.sql")
-@EntityScan("org.thingsboard.server.dao.model.sql")
+@ComponentScan("com.loit.dao.sql")
+@EnableJpaRepositories("com.loit.dao.sql")
+@EntityScan("com.loit.dao.model.sql")
 @EnableTransactionManagement
 @SqlDao
 public class JpaDaoConfig {

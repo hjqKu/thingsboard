@@ -15,7 +15,6 @@
  */
 package com.loit.service.transport;
 
-import com.loit.gen.transport.TransportProtos;
 import com.loit.kafka.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import org.thingsboard.server.kafka.*;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

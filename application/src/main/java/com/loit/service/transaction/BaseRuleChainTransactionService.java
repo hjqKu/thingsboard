@@ -17,7 +17,6 @@ package com.loit.service.transaction;
 
 import com.loit.common.data.id.EntityId;
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,10 +26,10 @@ import org.thingsboard.rule.engine.api.RuleChainTransactionService;
 import com.loit.common.data.id.EntityId;
 import com.loit.common.msg.TbMsg;
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import com.loit.service.cluster.routing.ClusterRoutingService;
 import com.loit.service.cluster.rpc.ClusterRpcService;
 import com.loit.service.executors.DbCallbackExecutorService;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

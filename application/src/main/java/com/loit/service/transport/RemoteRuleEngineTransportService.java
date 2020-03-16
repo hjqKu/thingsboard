@@ -17,7 +17,6 @@ package com.loit.service.transport;
 
 import akka.actor.ActorRef;
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.transport.TransportProtos;
 import com.loit.kafka.TBKafkaConsumerTemplate;
 import com.loit.kafka.TBKafkaProducerTemplate;
 import com.loit.kafka.TbKafkaSettings;
@@ -44,6 +43,7 @@ import org.thingsboard.common.util.ThingsBoardThreadFactory;
 import com.loit.actors.ActorSystemContext;
 import com.loit.service.cluster.routing.ClusterRoutingService;
 import com.loit.service.cluster.rpc.ClusterRpcService;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

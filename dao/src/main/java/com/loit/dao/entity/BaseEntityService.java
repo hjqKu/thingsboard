@@ -18,7 +18,6 @@ package com.loit.dao.entity;
 import com.google.common.base.Function;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-import com.loit.common.data.EntityType;
 import com.loit.common.data.HasName;
 import com.loit.common.data.alarm.AlarmId;
 import com.loit.common.data.id.*;
@@ -36,7 +35,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.loit.common.data.HasName;
 import com.loit.common.data.alarm.AlarmId;
-import org.thingsboard.server.common.data.id.*;
 import com.loit.dao.alarm.AlarmService;
 import com.loit.dao.asset.AssetService;
 import com.loit.dao.customer.CustomerService;
@@ -92,31 +90,31 @@ public class BaseEntityService extends AbstractEntityService implements EntitySe
         ListenableFuture<String> entityName;
         ListenableFuture<? extends HasName> hasName;
         switch (entityId.getEntityType()) {
-            case EntityType.ASSET:
+            case ASSET:
                 hasName = assetService.findAssetByIdAsync(tenantId, new AssetId(entityId.getId()));
                 break;
-            case EntityType.DEVICE:
+            case DEVICE:
                 hasName = deviceService.findDeviceByIdAsync(tenantId, new DeviceId(entityId.getId()));
                 break;
-            case EntityType.ENTITY_VIEW:
+            case ENTITY_VIEW:
                 hasName = entityViewService.findEntityViewByIdAsync(tenantId, new EntityViewId(entityId.getId()));
                 break;
-            case EntityType.TENANT:
+            case TENANT:
                 hasName = tenantService.findTenantByIdAsync(tenantId, new TenantId(entityId.getId()));
                 break;
-            case EntityType.CUSTOMER:
+            case CUSTOMER:
                 hasName = customerService.findCustomerByIdAsync(tenantId, new CustomerId(entityId.getId()));
                 break;
-            case EntityType.USER:
+            case USER:
                 hasName = userService.findUserByIdAsync(tenantId, new UserId(entityId.getId()));
                 break;
-            case EntityType.DASHBOARD:
+            case DASHBOARD:
                 hasName = dashboardService.findDashboardInfoByIdAsync(tenantId, new DashboardId(entityId.getId()));
                 break;
-            case EntityType.ALARM:
+            case ALARM:
                 hasName = alarmService.findAlarmByIdAsync(tenantId, new AlarmId(entityId.getId()));
                 break;
-            case EntityType.RULE_CHAIN:
+            case RULE_CHAIN:
                 hasName = ruleChainService.findRuleChainByIdAsync(tenantId, new RuleChainId(entityId.getId()));
                 break;
             default:

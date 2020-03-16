@@ -18,7 +18,6 @@ package com.loit.transport.mqtt;
 import com.google.common.io.Resources;
 import com.loit.common.transport.TransportService;
 import com.loit.common.transport.TransportServiceCallback;
-import com.loit.gen.transport.TransportProtos;
 import io.netty.handler.ssl.SslHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +28,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import com.loit.common.msg.EncryptionUtil;
 import com.loit.transport.mqtt.util.SslUtil;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;

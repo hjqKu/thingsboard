@@ -39,7 +39,6 @@ import com.loit.common.msg.rpc.ToDeviceRpcRequest;
 import com.loit.common.msg.session.SessionMsgType;
 import com.loit.common.msg.timeout.DeviceActorClientSideRpcTimeoutMsg;
 import com.loit.common.msg.timeout.DeviceActorServerSideRpcTimeoutMsg;
-import com.loit.gen.transport.TransportProtos;
 import com.loit.service.rpc.FromDeviceRpcResponse;
 import com.loit.service.rpc.ToDeviceRpcRequestActorMsg;
 import com.loit.service.rpc.ToServerRpcResponseActorMsg;
@@ -51,6 +50,7 @@ import org.thingsboard.rule.engine.api.msg.DeviceAttributesEventNotificationMsg;
 import org.thingsboard.rule.engine.api.msg.DeviceNameOrTypeUpdateMsg;
 import com.loit.actors.ActorSystemContext;
 import com.loit.actors.shared.AbstractContextAwareMsgProcessor;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -534,16 +534,16 @@ class DeviceActorMessageProcessor extends AbstractContextAwareMsgProcessor {
         JsonObject json = new JsonObject();
         for (TransportProtos.KeyValueProto kv : tsKv) {
             switch (kv.getType()) {
-                case TransportProtos.KeyValueType.BOOLEAN_V:
+                case BOOLEAN_V:
                     json.addProperty(kv.getKey(), kv.getBoolV());
                     break;
-                case TransportProtos.KeyValueType.LONG_V:
+                case LONG_V:
                     json.addProperty(kv.getKey(), kv.getLongV());
                     break;
-                case TransportProtos.KeyValueType.DOUBLE_V:
+                case DOUBLE_V:
                     json.addProperty(kv.getKey(), kv.getDoubleV());
                     break;
-                case TransportProtos.KeyValueType.STRING_V:
+                case STRING_V:
                     json.addProperty(kv.getKey(), kv.getStringV());
                     break;
             }

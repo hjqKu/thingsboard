@@ -16,10 +16,10 @@
 package com.loit.transport.mqtt.adaptors;
 
 import com.loit.common.transport.adaptor.AdaptorException;
-import com.loit.gen.transport.TransportProtos;
 import io.netty.handler.codec.mqtt.MqttMessage;
 import io.netty.handler.codec.mqtt.MqttPublishMessage;
 import com.loit.transport.mqtt.session.MqttDeviceAwareSessionContext;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.util.Optional;
 

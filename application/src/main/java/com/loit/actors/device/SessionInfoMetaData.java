@@ -16,7 +16,6 @@
 package com.loit.actors.device;
 
 import lombok.Data;
-import com.loit.gen.transport.TransportProtos.SessionType;
 
 /**
  * @author Andrew Shvayka

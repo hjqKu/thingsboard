@@ -95,19 +95,19 @@ public abstract class ComponentActor<T extends EntityId, P extends ComponentMsgP
         log.debug("[{}][{}][{}] onComponentLifecycleMsg: [{}]", tenantId, id, id.getEntityType(), msg.getEvent());
         try {
             switch (msg.getEvent()) {
-                case ComponentLifecycleEvent.CREATED:
+                case CREATED:
                     processor.onCreated(context());
                     break;
-                case ComponentLifecycleEvent.UPDATED:
+                case UPDATED:
                     processor.onUpdate(context());
                     break;
-                case ComponentLifecycleEvent.ACTIVATED:
+                case ACTIVATED:
                     processor.onActivate(context());
                     break;
-                case ComponentLifecycleEvent.SUSPENDED:
+                case SUSPENDED:
                     processor.onSuspend(context());
                     break;
-                case ComponentLifecycleEvent.DELETED:
+                case DELETED:
                     processor.onStop(context());
                     break;
                 default:

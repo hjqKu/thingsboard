@@ -17,8 +17,8 @@ package com.loit.service.script;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.util.JsonFormat;
-import com.loit.gen.js.JsInvokeProtos;
 import com.loit.kafka.TbKafkaEncoder;
+import org.thingsboard.server.gen.js.JsInvokeProtos;
 
 import java.nio.charset.StandardCharsets;
 

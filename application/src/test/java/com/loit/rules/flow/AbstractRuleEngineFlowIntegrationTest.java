@@ -37,7 +37,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.thingsboard.rule.engine.metadata.TbGetAttributesNodeConfiguration;
-import org.thingsboard.server.common.data.*;
 import com.loit.controller.AbstractRuleEngineControllerTest;
 
 import java.util.Arrays;

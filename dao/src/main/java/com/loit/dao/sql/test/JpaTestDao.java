@@ -11,7 +11,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
-import org.thingsboard.server.common.data.*;
 import com.loit.dao.DaoUtil;
 import com.loit.dao.model.sql.StudentEntity;
 import com.loit.dao.sql.JpaAbstractSearchTextTestDao;

@@ -17,11 +17,11 @@ package com.loit.service.cluster.rpc;
 
 import com.loit.common.msg.cluster.ServerAddress;
 import com.loit.common.msg.cluster.ServerType;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import io.grpc.ManagedChannel;
 import io.grpc.stub.StreamObserver;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 import java.io.Closeable;
 import java.util.UUID;

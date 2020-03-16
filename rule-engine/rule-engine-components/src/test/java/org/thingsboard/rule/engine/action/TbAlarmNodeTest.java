@@ -45,6 +45,7 @@ import javax.script.ScriptException;
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
+import static com.loit.common.data.alarm.AlarmStatus.*;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;

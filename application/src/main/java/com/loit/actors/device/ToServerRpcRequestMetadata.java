@@ -15,9 +15,8 @@
  */
 package com.loit.actors.device;
 
-import com.loit.gen.transport.TransportProtos;
 import lombok.Data;
-import com.loit.gen.transport.TransportProtos;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.util.UUID;
 

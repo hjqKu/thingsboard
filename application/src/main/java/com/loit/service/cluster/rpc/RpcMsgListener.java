@@ -16,9 +16,9 @@
 package com.loit.service.cluster.rpc;
 
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import com.loit.actors.rpc.RpcBroadcastMsg;
 import com.loit.actors.rpc.RpcSessionCreateRequestMsg;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 /**
  * @author Andrew Shvayka

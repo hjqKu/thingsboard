@@ -36,7 +36,6 @@ import com.loit.dao.attributes.AttributesService;
 import com.loit.dao.device.DeviceService;
 import com.loit.dao.tenant.TenantService;
 import com.loit.dao.timeseries.TimeseriesService;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +59,7 @@ import com.loit.common.msg.system.ServiceToRuleEngineMsg;
 import com.loit.service.cluster.routing.ClusterRoutingService;
 import com.loit.service.cluster.rpc.ClusterRpcService;
 import com.loit.service.telemetry.TelemetrySubscriptionService;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 import javax.annotation.Nullable;
 import javax.annotation.PostConstruct;

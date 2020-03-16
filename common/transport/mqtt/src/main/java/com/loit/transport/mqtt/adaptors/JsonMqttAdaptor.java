@@ -22,7 +22,6 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.loit.common.transport.adaptor.AdaptorException;
 import com.loit.common.transport.adaptor.JsonConverter;
-import com.loit.gen.transport.TransportProtos;
 import com.loit.transport.mqtt.MqttTopics;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
@@ -37,9 +36,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import com.loit.common.transport.adaptor.AdaptorException;
 import com.loit.common.transport.adaptor.JsonConverter;
-import com.loit.gen.transport.TransportProtos;
 import com.loit.transport.mqtt.MqttTopics;
 import com.loit.transport.mqtt.session.MqttDeviceAwareSessionContext;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.nio.charset.Charset;
 import java.util.Arrays;

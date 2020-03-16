@@ -36,7 +36,6 @@ import com.loit.common.msg.cluster.SendToClusterMsg;
 import com.loit.common.msg.cluster.ServerAddress;
 import com.loit.common.msg.cluster.ToAllNodesMsg;
 import com.loit.common.msg.plugin.ComponentLifecycleMsg;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import com.loit.service.cluster.discovery.DiscoveryService;
 import com.loit.service.cluster.discovery.ServerInstance;
 import com.loit.service.cluster.rpc.ClusterRpcService;
@@ -68,12 +67,12 @@ import com.loit.common.msg.cluster.SendToClusterMsg;
 import com.loit.common.msg.cluster.ServerAddress;
 import com.loit.common.msg.cluster.ToAllNodesMsg;
 import com.loit.common.msg.plugin.ComponentLifecycleMsg;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import com.loit.service.cluster.discovery.DiscoveryService;
 import com.loit.service.cluster.discovery.ServerInstance;
 import com.loit.service.cluster.rpc.ClusterRpcService;
 import com.loit.service.state.DeviceStateService;
 import com.loit.service.transport.RuleEngineStats;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 import scala.concurrent.Await;
 import scala.concurrent.Future;
 import scala.concurrent.duration.Duration;
@@ -84,7 +83,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.loit.gen.cluster.ClusterAPIProtos.MessageType.CLUSTER_ACTOR_MESSAGE;
 
 @Service
 @Slf4j
@@ -239,7 +237,7 @@ public class DefaultActorService implements ActorService {
             log.info("MSG: {}", msg);
         }
         switch (msg.getMessageType()) {
-            case ClusterAPIProtos.MessageType.CLUSTER_ACTOR_MESSAGE:
+            case CLUSTER_ACTOR_MESSAGE:
                 java.util.Optional<TbActorMsg> decodedMsg = actorContext.getEncodingService()
                         .decode(msg.getPayload().toByteArray());
                 if (decodedMsg.isPresent()) {
@@ -248,34 +246,34 @@ public class DefaultActorService implements ActorService {
                     log.error("Error during decoding cluster proto message");
                 }
                 break;
-            case ClusterAPIProtos.MessageType.TO_ALL_NODES_MSG:
+            case TO_ALL_NODES_MSG:
                 //TODO
                 break;
-            case ClusterAPIProtos.MessageType.CLUSTER_TELEMETRY_SUBSCRIPTION_CREATE_MESSAGE:
+            case CLUSTER_TELEMETRY_SUBSCRIPTION_CREATE_MESSAGE:
                 actorContext.getTsSubService().onNewRemoteSubscription(serverAddress, msg.getPayload().toByteArray());
                 break;
-            case ClusterAPIProtos.MessageType.CLUSTER_TELEMETRY_SUBSCRIPTION_UPDATE_MESSAGE:
+            case CLUSTER_TELEMETRY_SUBSCRIPTION_UPDATE_MESSAGE:
                 actorContext.getTsSubService().onRemoteSubscriptionUpdate(serverAddress, msg.getPayload().toByteArray());
                 break;
-            case ClusterAPIProtos.MessageType.CLUSTER_TELEMETRY_SUBSCRIPTION_CLOSE_MESSAGE:
+            case CLUSTER_TELEMETRY_SUBSCRIPTION_CLOSE_MESSAGE:
                 actorContext.getTsSubService().onRemoteSubscriptionClose(serverAddress, msg.getPayload().toByteArray());
                 break;
-            case ClusterAPIProtos.MessageType.CLUSTER_TELEMETRY_SESSION_CLOSE_MESSAGE:
+            case CLUSTER_TELEMETRY_SESSION_CLOSE_MESSAGE:
                 actorContext.getTsSubService().onRemoteSessionClose(serverAddress, msg.getPayload().toByteArray());
                 break;
-            case ClusterAPIProtos.MessageType.CLUSTER_TELEMETRY_ATTR_UPDATE_MESSAGE:
+            case CLUSTER_TELEMETRY_ATTR_UPDATE_MESSAGE:
                 actorContext.getTsSubService().onRemoteAttributesUpdate(serverAddress, msg.getPayload().toByteArray());
                 break;
-            case ClusterAPIProtos.MessageType.CLUSTER_TELEMETRY_TS_UPDATE_MESSAGE:
+            case CLUSTER_TELEMETRY_TS_UPDATE_MESSAGE:
                 actorContext.getTsSubService().onRemoteTsUpdate(serverAddress, msg.getPayload().toByteArray());
                 break;
-            case ClusterAPIProtos.MessageType.CLUSTER_RPC_FROM_DEVICE_RESPONSE_MESSAGE:
+            case CLUSTER_RPC_FROM_DEVICE_RESPONSE_MESSAGE:
                 actorContext.getDeviceRpcService().processResponseToServerSideRPCRequestFromRemoteServer(serverAddress, msg.getPayload().toByteArray());
                 break;
-            case ClusterAPIProtos.MessageType.CLUSTER_DEVICE_STATE_SERVICE_MESSAGE:
+            case CLUSTER_DEVICE_STATE_SERVICE_MESSAGE:
                 actorContext.getDeviceStateService().onRemoteMsg(serverAddress, msg.getPayload().toByteArray());
                 break;
-            case ClusterAPIProtos.MessageType.CLUSTER_TRANSACTION_SERVICE_MESSAGE:
+            case CLUSTER_TRANSACTION_SERVICE_MESSAGE:
                 actorContext.getRuleChainTransactionService().onRemoteTransactionMsg(serverAddress, msg.getPayload().toByteArray());
                 break;
         }

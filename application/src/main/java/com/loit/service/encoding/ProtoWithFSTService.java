@@ -17,11 +17,11 @@ package com.loit.service.encoding;
 
 import com.google.protobuf.ByteString;
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import lombok.extern.slf4j.Slf4j;
 import org.nustaq.serialization.FSTConfiguration;
 import org.springframework.stereotype.Service;
 import com.loit.common.msg.TbActorMsg;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 import java.util.Optional;
 

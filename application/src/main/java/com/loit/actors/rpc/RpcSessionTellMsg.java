@@ -15,9 +15,8 @@
  */
 package com.loit.actors.rpc;
 
-import com.loit.gen.cluster.ClusterAPIProtos;
 import lombok.Data;
-import com.loit.gen.cluster.ClusterAPIProtos;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 /**
  * @author Andrew Shvayka

@@ -27,10 +27,10 @@ import java.util.Arrays;
 
 @Slf4j
 @SpringBootConfiguration
-@ComponentScan({"org.thingsboard.server.install",
-        "org.thingsboard.server.service.component",
-        "org.thingsboard.server.service.install",
-        "org.thingsboard.server.dao"})
+@ComponentScan({"com.loit.install",
+        "com.loit.service.component",
+        "com.loit.service.install",
+        "com.loit.dao"})
 public class ThingsboardInstallApplication {
 
     private static final String SPRING_CONFIG_NAME_KEY = "--spring.config.name";

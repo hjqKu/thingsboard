@@ -327,31 +327,31 @@ public abstract class BaseController {
             checkNotNull(entityId);
             validateId(entityId.getId(), "Incorrect entityId " + entityId);
             switch (entityId.getEntityType()) {
-                case EntityType.DEVICE:
+                case DEVICE:
                     checkDeviceId(new DeviceId(entityId.getId()), operation);
                     return;
-                case EntityType.CUSTOMER:
+                case CUSTOMER:
                     checkCustomerId(new CustomerId(entityId.getId()), operation);
                     return;
-                case EntityType.TENANT:
+                case TENANT:
                     checkTenantId(new TenantId(entityId.getId()), operation);
                     return;
-                case EntityType.RULE_CHAIN:
+                case RULE_CHAIN:
                     checkRuleChain(new RuleChainId(entityId.getId()), operation);
                     return;
-                case EntityType.RULE_NODE:
+                case RULE_NODE:
                     checkRuleNode(new RuleNodeId(entityId.getId()), operation);
                     return;
-                case EntityType.ASSET:
+                case ASSET:
                     checkAssetId(new AssetId(entityId.getId()), operation);
                     return;
-                case EntityType.DASHBOARD:
+                case DASHBOARD:
                     checkDashboardId(new DashboardId(entityId.getId()), operation);
                     return;
-                case EntityType.USER:
+                case USER:
                     checkUserId(new UserId(entityId.getId()), operation);
                     return;
-                case EntityType.ENTITY_VIEW:
+                case ENTITY_VIEW:
                     checkEntityViewId(new EntityViewId(entityId.getId()), operation);
                     return;
                 default:

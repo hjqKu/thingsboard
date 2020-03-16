@@ -16,8 +16,8 @@
 package com.loit.transport.mqtt.session;
 
 import com.loit.common.transport.SessionMsgListener;
-import com.loit.gen.transport.TransportProtos;
 import lombok.extern.slf4j.Slf4j;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.util.UUID;
 import java.util.concurrent.ConcurrentMap;

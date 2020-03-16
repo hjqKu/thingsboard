@@ -31,7 +31,6 @@ import com.loit.common.data.page.TimePageData;
 import com.loit.common.data.page.TimePageLink;
 import com.loit.common.data.security.Authority;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.thingsboard.server.common.data.*;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

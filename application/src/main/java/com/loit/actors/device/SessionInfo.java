@@ -15,8 +15,8 @@
  */
 package com.loit.actors.device;
 
-import com.loit.gen.transport.TransportProtos;
 import lombok.Data;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 /**
  * @author Andrew Shvayka

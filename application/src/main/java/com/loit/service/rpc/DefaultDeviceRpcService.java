@@ -27,7 +27,6 @@ import com.loit.common.data.id.TenantId;
 import com.loit.common.msg.cluster.ServerAddress;
 import com.loit.common.msg.core.ToServerRpcResponseMsg;
 import com.loit.dao.device.DeviceService;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -49,9 +48,9 @@ import com.loit.common.msg.core.ToServerRpcResponseMsg;
 import com.loit.common.msg.rpc.ToDeviceRpcRequest;
 import com.loit.common.msg.system.ServiceToRuleEngineMsg;
 import com.loit.dao.device.DeviceService;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import com.loit.service.cluster.routing.ClusterRoutingService;
 import com.loit.service.cluster.rpc.ClusterRpcService;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

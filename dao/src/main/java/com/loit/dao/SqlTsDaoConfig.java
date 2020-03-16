@@ -25,9 +25,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan("org.thingsboard.server.dao.sqlts.ts")
-@EnableJpaRepositories("org.thingsboard.server.dao.sqlts.ts")
-@EntityScan("org.thingsboard.server.dao.model.sqlts.ts")
+@ComponentScan("com.loit.dao.sqlts.ts")
+@EnableJpaRepositories("com.loit.dao.sqlts.ts")
+@EntityScan("com.loit.dao.model.sqlts.ts")
 @EnableTransactionManagement
 @SqlTsDao
 public class SqlTsDaoConfig {

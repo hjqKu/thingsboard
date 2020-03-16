@@ -48,7 +48,7 @@ public abstract class RuleChainManagerActor extends ContextAwareActor {
     protected ActorRef getEntityActorRef(EntityId entityId) {
         ActorRef target = null;
         switch (entityId.getEntityType()) {
-            case EntityType.RULE_CHAIN:
+            case RULE_CHAIN:
                 target = ruleChainManager.getOrCreateActor(this.context(), (RuleChainId) entityId);
                 break;
         }

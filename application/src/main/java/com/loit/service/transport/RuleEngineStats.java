@@ -15,9 +15,8 @@
  */
 package com.loit.service.transport;
 
-import com.loit.gen.transport.TransportProtos;
 import lombok.extern.slf4j.Slf4j;
-import com.loit.gen.transport.TransportProtos;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

@@ -16,11 +16,10 @@
 package com.loit.actors.rpc;
 
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import io.grpc.stub.StreamObserver;
 import lombok.Data;
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.cluster.ClusterAPIProtos;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 import java.util.UUID;
 

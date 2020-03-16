@@ -19,10 +19,10 @@ import com.loit.common.data.id.DeviceId;
 import com.loit.common.data.id.TenantId;
 import com.loit.common.msg.aware.DeviceAwareMsg;
 import com.loit.common.msg.aware.TenantAwareMsg;
-import com.loit.gen.transport.TransportProtos;
 import lombok.Data;
 import com.loit.common.msg.MsgType;
 import com.loit.common.msg.TbActorMsg;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import java.io.Serializable;
 import java.util.UUID;

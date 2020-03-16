@@ -281,10 +281,10 @@ public class RuleChainActorMessageProcessor extends ComponentMsgProcessor<RuleCh
                 EntityId target = relation.getOut();
                 log.trace("[{}][{}][{}] Pushing message to multiple targets: [{}]", tenantId, entityId, msg.getId(), relation.getOut());
                 switch (target.getEntityType()) {
-                    case EntityType.RULE_NODE:
+                    case RULE_NODE:
                         enqueueAndForwardMsgCopyToNode(msg, target, relation.getType());
                         break;
-                    case EntityType.RULE_CHAIN:
+                    case RULE_CHAIN:
                         enqueueAndForwardMsgCopyToChain(msg, target, relation.getType());
                         break;
                 }
@@ -324,10 +324,10 @@ public class RuleChainActorMessageProcessor extends ComponentMsgProcessor<RuleCh
 
     private void pushToTarget(TbMsg msg, EntityId target, String fromRelationType) {
         switch (target.getEntityType()) {
-            case EntityType.RULE_NODE:
+            case RULE_NODE:
                 pushMsgToNode(nodeActors.get(new RuleNodeId(target.getId())), msg, fromRelationType);
                 break;
-            case EntityType.RULE_CHAIN:
+            case RULE_CHAIN:
                 parent.tell(new RuleChainToRuleChainMsg(new RuleChainId(target.getId()), entityId, msg, fromRelationType, false), self);
                 break;
         }

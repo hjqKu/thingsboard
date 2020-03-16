@@ -17,12 +17,11 @@ package com.loit.service.cluster.rpc;
 
 import com.loit.common.msg.TbActorMsg;
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.cluster.ClusterAPIProtos;
 import io.grpc.stub.StreamObserver;
 import com.loit.actors.rpc.RpcBroadcastMsg;
 import com.loit.common.msg.TbActorMsg;
 import com.loit.common.msg.cluster.ServerAddress;
-import com.loit.gen.cluster.ClusterAPIProtos;
+import org.thingsboard.server.gen.cluster.ClusterAPIProtos;
 
 import java.util.UUID;
 

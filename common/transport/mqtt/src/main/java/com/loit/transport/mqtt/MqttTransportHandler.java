@@ -21,7 +21,6 @@ import com.loit.common.transport.TransportService;
 import com.loit.common.transport.TransportServiceCallback;
 import com.loit.common.transport.adaptor.AdaptorException;
 import com.loit.common.transport.service.AbstractTransportService;
-import com.loit.gen.transport.TransportProtos;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.mqtt.MqttConnAckMessage;
@@ -51,6 +50,7 @@ import com.loit.transport.mqtt.session.DeviceSessionCtx;
 import com.loit.transport.mqtt.session.GatewaySessionHandler;
 import com.loit.transport.mqtt.session.MqttTopicMatcher;
 import com.loit.transport.mqtt.util.SslUtil;
+import org.thingsboard.server.gen.transport.TransportProtos;
 
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.security.cert.X509Certificate;
