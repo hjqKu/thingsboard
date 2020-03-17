@@ -27,7 +27,6 @@ import com.loit.common.data.id.UUIDBased;
 import com.loit.common.data.page.TextPageLink;
 import com.loit.common.data.page.TimePageLink;
 import com.loit.common.data.security.Authority;
-import com.loit.config.ThingsboardSecurityConfiguration;
 import com.loit.service.mail.TestMailService;
 import com.loit.service.security.auth.jwt.RefreshTokenRequest;
 import com.loit.service.security.auth.rest.LoginRequest;
@@ -79,7 +78,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
@@ -145,30 +143,30 @@ public abstract class AbstractControllerTest {
         }
     };
 
-    @Autowired
-    void setConverters(HttpMessageConverter<?>[] converters) {
-
-        this.mappingJackson2HttpMessageConverter = Arrays.stream(converters)
-                .filter(hmc -> hmc instanceof MappingJackson2HttpMessageConverter)
-                .findAny()
-                .get();
-
-        this.stringHttpMessageConverter = Arrays.stream(converters)
-                .filter(hmc -> hmc instanceof StringHttpMessageConverter)
-                .findAny()
-                .get();
-
-        Assert.assertNotNull("the JSON message converter must not be null",
-                this.mappingJackson2HttpMessageConverter);
-    }
+//    @Autowired
+//    void setConverters(HttpMessageConverter<?>[] converters) {
+//
+//        this.mappingJackson2HttpMessageConverter = Arrays.stream(converters)
+//                .filter(hmc -> hmc instanceof MappingJackson2HttpMessageConverter)
+//                .findAny()
+//                .get();
+//
+//        this.stringHttpMessageConverter = Arrays.stream(converters)
+//                .filter(hmc -> hmc instanceof StringHttpMessageConverter)
+//                .findAny()
+//                .get();
+//
+//        Assert.assertNotNull("the JSON message converter must not be null",
+//                this.mappingJackson2HttpMessageConverter);
+//    }
 
     @Before
     public void setup() throws Exception {
         log.info("Executing setup");
-        if (this.mockMvc == null) {
-            this.mockMvc = webAppContextSetup(webApplicationContext)
-                    .apply(springSecurity()).build();
-        }
+//        if (this.mockMvc == null) {
+//            this.mockMvc = webAppContextSetup(webApplicationContext)
+//                    .apply(springSecurity()).build();
+//        }
         loginSysAdmin();
 
         Tenant tenant = new Tenant();
@@ -283,7 +281,7 @@ public abstract class AbstractControllerTest {
 
     protected void setJwtToken(MockHttpServletRequestBuilder request) {
         if (this.token != null) {
-            request.header(ThingsboardSecurityConfiguration.JWT_TOKEN_HEADER_PARAM, "Bearer " + this.token);
+            //request.header(ThingsboardSecurityConfiguration.JWT_TOKEN_HEADER_PARAM, "Bearer " + this.token);
         }
     }
 

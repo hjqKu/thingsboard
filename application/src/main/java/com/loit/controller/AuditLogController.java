@@ -25,7 +25,6 @@ import com.loit.common.data.id.UserId;
 import com.loit.common.data.page.TimePageData;
 import com.loit.common.data.page.TimePageLink;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +41,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class AuditLogController extends BaseController {
 
-    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+//    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/audit/logs/customer/{customerId}", params = {"limit"}, method = RequestMethod.GET)
     @ResponseBody
     public TimePageData<AuditLog> getAuditLogsByCustomerId(
@@ -64,7 +63,7 @@ public class AuditLogController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+//    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/audit/logs/user/{userId}", params = {"limit"}, method = RequestMethod.GET)
     @ResponseBody
     public TimePageData<AuditLog> getAuditLogsByUserId(
@@ -86,7 +85,7 @@ public class AuditLogController extends BaseController {
         }
     }
 
-    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+//    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/audit/logs/entity/{entityType}/{entityId}", params = {"limit"}, method = RequestMethod.GET)
     @ResponseBody
     public TimePageData<AuditLog> getAuditLogsByEntityId(
@@ -113,7 +112,7 @@ public class AuditLogController extends BaseController {
     /**
      *获取审计日志列表
      * */
-    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+//    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @RequestMapping(value = "/audit/logs", params = {"limit"}, method = RequestMethod.GET)
     @ResponseBody
     public TimePageData<AuditLog> getAuditLogs(

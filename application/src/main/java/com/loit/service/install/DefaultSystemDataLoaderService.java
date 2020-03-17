@@ -34,7 +34,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.loit.common.data.AdminSettings;
 import com.loit.common.data.Customer;
@@ -54,8 +53,8 @@ public class DefaultSystemDataLoaderService implements SystemDataLoaderService {
     @Autowired
     private InstallScripts installScripts;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     private UserService userService;
@@ -78,10 +77,10 @@ public class DefaultSystemDataLoaderService implements SystemDataLoaderService {
     @Autowired
     private DeviceCredentialsService deviceCredentialsService;
 
-    @Bean
-    protected BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+//    @Bean
+//    protected BCryptPasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
     @Override
     public void createSysAdmin() {
@@ -178,7 +177,7 @@ public class DefaultSystemDataLoaderService implements SystemDataLoaderService {
         user.setCustomerId(customerId);
         user = userService.saveUser(user);
         UserCredentials userCredentials = userService.findUserCredentialsByUserId(TenantId.SYS_TENANT_ID, user.getId());
-        userCredentials.setPassword(passwordEncoder.encode(password));
+        //userCredentials.setPassword(passwordEncoder.encode(password));
         userCredentials.setEnabled(true);
         userCredentials.setActivateToken(null);
         userService.saveUserCredentials(TenantId.SYS_TENANT_ID, userCredentials);

@@ -19,10 +19,11 @@ import com.loit.common.data.EntityType;
 import com.loit.common.data.audit.ActionType;
 import com.loit.common.data.EntityType;
 import com.loit.common.data.audit.ActionType;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-
+@Component
 public class AuditLogLevelFilter {
 
     private Map<EntityType, AuditLogLevelMask> entityTypeMask = new HashMap<>();

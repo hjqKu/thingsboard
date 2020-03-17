@@ -63,8 +63,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import com.loit.actors.service.ActorService;
 import com.loit.common.data.Customer;
@@ -98,7 +96,6 @@ import com.loit.common.msg.system.ServiceToRuleEngineMsg;
 import com.loit.dao.exception.DataValidationException;
 import com.loit.dao.exception.IncorrectParameterException;
 import com.loit.dao.model.ModelConstants;
-import com.loit.exception.ThingsboardErrorResponseHandler;
 import com.loit.service.component.ComponentDiscoveryService;
 
 import javax.mail.MessagingException;
@@ -119,8 +116,8 @@ public abstract class BaseController {
 
     private static final ObjectMapper json = new ObjectMapper();
 
-    @Autowired
-    private ThingsboardErrorResponseHandler errorResponseHandler;
+//    @Autowired
+//    private ThingsboardErrorResponseHandler errorResponseHandler;
 
     @Autowired
     protected AccessControlService accessControlService;
@@ -189,11 +186,11 @@ public abstract class BaseController {
     @Getter
     private boolean logControllerErrorStackTrace;
 
-
-    @ExceptionHandler(ThingsboardException.class)
-    public void handleThingsboardException(ThingsboardException ex, HttpServletResponse response) {
-        errorResponseHandler.handle(ex, response);
-    }
+//
+//    @ExceptionHandler(ThingsboardException.class)
+//    public void handleThingsboardException(ThingsboardException ex, HttpServletResponse response) {
+//        errorResponseHandler.handle(ex, response);
+//    }
 
     ThingsboardException handleException(Exception exception) {
         return handleException(exception, true);
@@ -274,12 +271,13 @@ public abstract class BaseController {
     }
 
     protected SecurityUser getCurrentUser() throws ThingsboardException {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof SecurityUser) {
-            return (SecurityUser) authentication.getPrincipal();
-        } else {
-            throw new ThingsboardException("You aren't authorized to perform this operation!", ThingsboardErrorCode.AUTHENTICATION);
-        }
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        if (authentication != null && authentication.getPrincipal() instanceof SecurityUser) {
+//            return (SecurityUser) authentication.getPrincipal();
+//        } else {
+//            throw new ThingsboardException("You aren't authorized to perform this operation!", ThingsboardErrorCode.AUTHENTICATION);
+//        }
+        return new SecurityUser();
     }
 
     Tenant checkTenantId(TenantId tenantId, Operation operation) throws ThingsboardException {

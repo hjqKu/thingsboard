@@ -24,23 +24,17 @@ import com.loit.common.data.exception.ThingsboardErrorCode;
 import com.loit.common.data.exception.ThingsboardException;
 import com.loit.common.data.id.TenantId;
 import com.loit.common.data.security.UserCredentials;
-import com.loit.common.data.security.model.SecuritySettings;
 import com.loit.common.data.security.model.UserPasswordPolicy;
 import com.loit.dao.audit.AuditLogService;
-import com.loit.service.security.auth.jwt.RefreshTokenRepository;
 import com.loit.service.security.auth.rest.RestAuthenticationDetails;
 import com.loit.service.security.model.SecurityUser;
 import com.loit.service.security.model.UserPrincipal;
 import com.loit.service.security.model.token.JwtToken;
-import com.loit.service.security.model.token.JwtTokenFactory;
-import com.loit.service.security.system.SystemSecurityService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,25 +54,21 @@ import java.net.URISyntaxException;
 @Slf4j
 public class AuthController extends BaseController {
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
 
-    @Autowired
-    private JwtTokenFactory tokenFactory;
 
-    @Autowired
-    private RefreshTokenRepository refreshTokenRepository;
+//    @Autowired
+//    private RefreshTokenRepository refreshTokenRepository;
 
     @Autowired
     private MailService mailService;
 
-    @Autowired
-    private SystemSecurityService systemSecurityService;
 
     @Autowired
     private AuditLogService auditLogService;
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/auth/user", method = RequestMethod.GET)
     public @ResponseBody
     User getUser() throws ThingsboardException {
@@ -90,14 +80,14 @@ public class AuthController extends BaseController {
         }
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/auth/logout", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public void logout(HttpServletRequest request) throws ThingsboardException {
         logLogoutAction(request);
     }
 
-    @PreAuthorize("isAuthenticated()")
+//    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/auth/changePassword", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.OK)
     public void changePassword (
@@ -107,14 +97,14 @@ public class AuthController extends BaseController {
             String newPassword = changePasswordRequest.get("newPassword").asText();
             SecurityUser securityUser = getCurrentUser();
             UserCredentials userCredentials = userService.findUserCredentialsByUserId(TenantId.SYS_TENANT_ID, securityUser.getId());
-            if (!passwordEncoder.matches(currentPassword, userCredentials.getPassword())) {
-                throw new ThingsboardException("Current password doesn't match!", ThingsboardErrorCode.BAD_REQUEST_PARAMS);
-            }
-            systemSecurityService.validatePassword(securityUser.getTenantId(), newPassword, userCredentials);
-            if (passwordEncoder.matches(newPassword, userCredentials.getPassword())) {
-                throw new ThingsboardException("New password should be different from existing!", ThingsboardErrorCode.BAD_REQUEST_PARAMS);
-            }
-            userCredentials.setPassword(passwordEncoder.encode(newPassword));
+//            if (!passwordEncoder.matches(currentPassword, userCredentials.getPassword())) {
+//                throw new ThingsboardException("Current password doesn't match!", ThingsboardErrorCode.BAD_REQUEST_PARAMS);
+//            }
+//            systemSecurityService.validatePassword(securityUser.getTenantId(), newPassword, userCredentials);
+//            if (passwordEncoder.matches(newPassword, userCredentials.getPassword())) {
+//                throw new ThingsboardException("New password should be different from existing!", ThingsboardErrorCode.BAD_REQUEST_PARAMS);
+//            }
+//            userCredentials.setPassword(passwordEncoder.encode(newPassword));
             userService.replaceUserCredentials(securityUser.getTenantId(), userCredentials);
         } catch (Exception e) {
             throw handleException(e);
@@ -125,9 +115,10 @@ public class AuthController extends BaseController {
     @ResponseBody
     public UserPasswordPolicy getUserPasswordPolicy() throws ThingsboardException {
         try {
-            SecuritySettings securitySettings =
-                    checkNotNull(systemSecurityService.getSecuritySettings(TenantId.SYS_TENANT_ID));
-            return securitySettings.getPasswordPolicy();
+//            SecuritySettings securitySettings =
+//                    checkNotNull(systemSecurityService.getSecuritySettings(TenantId.SYS_TENANT_ID));
+//            return securitySettings.getPasswordPolicy();
+            return null;
         } catch (Exception e) {
             throw handleException(e);
         }
@@ -204,9 +195,9 @@ public class AuthController extends BaseController {
         try {
             String activateToken = activateRequest.get("activateToken").asText();
             String password = activateRequest.get("password").asText();
-            systemSecurityService.validatePassword(TenantId.SYS_TENANT_ID, password, null);
-            String encodedPassword = passwordEncoder.encode(password);
-            UserCredentials credentials = userService.activateUserCredentials(TenantId.SYS_TENANT_ID, activateToken, encodedPassword);
+            //systemSecurityService.validatePassword(TenantId.SYS_TENANT_ID, password, null);
+           // String encodedPassword = passwordEncoder.encode(password);
+            UserCredentials credentials = userService.activateUserCredentials(TenantId.SYS_TENANT_ID, activateToken, null);
             User user = userService.findUserById(TenantId.SYS_TENANT_ID, credentials.getUserId());
             UserPrincipal principal = new UserPrincipal(UserPrincipal.Type.USER_NAME, user.getEmail());
             SecurityUser securityUser = new SecurityUser(user, credentials.isEnabled(), principal);
@@ -220,13 +211,13 @@ public class AuthController extends BaseController {
                 log.info("Unable to send account activation email [{}]", e.getMessage());
             }
 
-            JwtToken accessToken = tokenFactory.createAccessJwtToken(securityUser);
-            JwtToken refreshToken = refreshTokenRepository.requestRefreshToken(securityUser);
+            //JwtToken accessToken = tokenFactory.createAccessJwtToken(securityUser);
+            //JwtToken refreshToken = refreshTokenRepository.requestRefreshToken(securityUser);
 
             ObjectMapper objectMapper = new ObjectMapper();
             ObjectNode tokenObject = objectMapper.createObjectNode();
-            tokenObject.put("token", accessToken.getToken());
-            tokenObject.put("refreshToken", refreshToken.getToken());
+            //tokenObject.put("token", accessToken.getToken());
+            //tokenObject.put("refreshToken", refreshToken.getToken());
             return tokenObject;
         } catch (Exception e) {
             throw handleException(e);
@@ -244,12 +235,12 @@ public class AuthController extends BaseController {
             String password = resetPasswordRequest.get("password").asText();
             UserCredentials userCredentials = userService.findUserCredentialsByResetToken(TenantId.SYS_TENANT_ID, resetToken);
             if (userCredentials != null) {
-                systemSecurityService.validatePassword(TenantId.SYS_TENANT_ID, password, userCredentials);
-                if (passwordEncoder.matches(password, userCredentials.getPassword())) {
-                    throw new ThingsboardException("New password should be different from existing!", ThingsboardErrorCode.BAD_REQUEST_PARAMS);
-                }
-                String encodedPassword = passwordEncoder.encode(password);
-                userCredentials.setPassword(encodedPassword);
+                //systemSecurityService.validatePassword(TenantId.SYS_TENANT_ID, password, userCredentials);
+//                if (passwordEncoder.matches(password, userCredentials.getPassword())) {
+//                    throw new ThingsboardException("New password should be different from existing!", ThingsboardErrorCode.BAD_REQUEST_PARAMS);
+//                }
+//                String encodedPassword = passwordEncoder.encode(password);
+//                userCredentials.setPassword(encodedPassword);
                 userCredentials.setResetToken(null);
                 userCredentials = userService.replaceUserCredentials(TenantId.SYS_TENANT_ID, userCredentials);
                 User user = userService.findUserById(TenantId.SYS_TENANT_ID, userCredentials.getUserId());
@@ -260,13 +251,13 @@ public class AuthController extends BaseController {
                 String email = user.getEmail();
                 mailService.sendPasswordWasResetEmail(loginUrl, email);
 
-                JwtToken accessToken = tokenFactory.createAccessJwtToken(securityUser);
-                JwtToken refreshToken = refreshTokenRepository.requestRefreshToken(securityUser);
+                //JwtToken accessToken = tokenFactory.createAccessJwtToken(securityUser);
+                //JwtToken refreshToken = refreshTokenRepository.requestRefreshToken(securityUser);
 
                 ObjectMapper objectMapper = new ObjectMapper();
                 ObjectNode tokenObject = objectMapper.createObjectNode();
-                tokenObject.put("token", accessToken.getToken());
-                tokenObject.put("refreshToken", refreshToken.getToken());
+                //tokenObject.put("token", accessToken.getToken());
+                //tokenObject.put("refreshToken", refreshToken.getToken());
                 return tokenObject;
             } else {
                 throw new ThingsboardException("Invalid reset token!", ThingsboardErrorCode.BAD_REQUEST_PARAMS);
