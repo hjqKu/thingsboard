@@ -36,7 +36,8 @@ public class TestController {
     @Autowired
     private TestRepository testRepository;
     public static void main(String[] args) {
-//        System.out.println(UUID.randomUUID());
+        System.out.println(UUID.randomUUID());
+        System.out.println(fromTimeUUID(UUID.fromString(UUID.randomUUID().toString())));
 //        System.out.println(UUID.randomUUID().toString());
 //        TenantId aa=new TenantId(UUID.randomUUID());
         System.out.println(UUIDs.timeBased().toString());
