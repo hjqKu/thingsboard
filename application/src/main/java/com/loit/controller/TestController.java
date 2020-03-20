@@ -2,6 +2,8 @@ package com.loit.controller;
 
 import com.datastax.driver.core.utils.UUIDs;
 import com.loit.common.data.BanStu;
+import com.loit.dao.model.sql.GatewayInfoEntity;
+import com.loit.dao.test.GatewayInfoDao;
 import com.loit.test.PageUtil;
 import com.loit.test.TestPageReq;
 import com.loit.test.TestReq;
@@ -35,6 +37,10 @@ import static com.loit.common.data.UUIDConverter.fromTimeUUID;
 public class TestController {
     @Autowired
     private TestRepository testRepository;
+    @Autowired
+    private TestDao testDao;
+    @Autowired
+    private GatewayInfoDao gatewayInfoDao;
     public static void main(String[] args) {
         System.out.println(UUID.randomUUID());
         System.out.println(fromTimeUUID(UUID.fromString(UUID.randomUUID().toString())));
@@ -46,8 +52,7 @@ public class TestController {
 
         System.out.println(fromTimeUUID(UUID.fromString(UUIDs.timeBased().toString())));
     }
-    @Autowired
-    private TestDao testDao;
+
     /**
      * 新增修改学生
      * */
@@ -95,6 +100,20 @@ public class TestController {
         List<BanStu> banStuList=testDao.findBSByMiX(req.getbName());
         PageUtil<BanStu> pageUtil=new PageUtil<BanStu>(req.getPage(),req.getSize(),banStuList);
         return pageUtil;
+    }
+
+    //=========================新写法====================================
+    /**
+     *新增网关表
+     * */
+    @PostMapping(value = "/gateway/add")
+    public GatewayInfoEntity gatwwayAdd(@RequestBody GatewayInfoEntity req){
+        String tenantId="1ea5793ebb506e0968c59ca7e358b66";
+        //新增网关信息
+        req.setId(UUIDs.timeBased().toString());
+        req.setTenantId(tenantId);
+        GatewayInfoEntity result=gatewayInfoDao.save(req);
+        return result;
     }
 
 }
