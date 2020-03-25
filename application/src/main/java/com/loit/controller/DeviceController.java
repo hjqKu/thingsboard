@@ -79,7 +79,9 @@ public class DeviceController extends BaseController {
             throw handleException(e);
         }
     }
-
+    /**
+     * 新增设备
+     * */
     @PreAuthorize("hasAnyAuthority('TENANT_ADMIN', 'CUSTOMER_USER')")
     @RequestMapping(value = "/device", method = RequestMethod.POST)
     @ResponseBody

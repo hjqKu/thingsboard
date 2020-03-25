@@ -1,9 +1,15 @@
 package com.loit.controller;
 
 import com.datastax.driver.core.utils.UUIDs;
-import com.loit.common.data.BanStu;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.loit.common.data.*;
+import com.loit.common.data.audit.ActionType;
+import com.loit.common.data.exception.ThingsboardException;
 import com.loit.dao.model.sql.GatewayInfoEntity;
 import com.loit.dao.test.GatewayInfoDao;
+import com.loit.service.security.permission.Operation;
+import com.loit.service.security.permission.Resource;
 import com.loit.test.PageUtil;
 import com.loit.test.TestPageReq;
 import com.loit.test.TestReq;
@@ -13,7 +19,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import com.loit.common.data.BanStu;
-import com.loit.common.data.Student;
 import com.loit.common.data.id.TenantId;
 import com.loit.common.data.page.TextPageData;
 import com.loit.dao.model.sql.StudentEntity;
@@ -34,23 +39,20 @@ import static com.loit.common.data.UUIDConverter.fromTimeUUID;
  */
 @RestController
 @RequestMapping("/api")
-public class TestController {
+public class TestController extends BaseController {
     @Autowired
     private TestRepository testRepository;
     @Autowired
     private TestDao testDao;
     @Autowired
     private GatewayInfoDao gatewayInfoDao;
-    public static void main(String[] args) {
-        System.out.println(UUID.randomUUID());
-        System.out.println(fromTimeUUID(UUID.fromString(UUID.randomUUID().toString())));
-//        System.out.println(UUID.randomUUID().toString());
-//        TenantId aa=new TenantId(UUID.randomUUID());
-        System.out.println(UUIDs.timeBased().toString());
-        System.out.println(UUID.fromString(UUIDs.timeBased().toString()));
-        TenantId tenantId=new TenantId(UUID.fromString("ad513ae0-62a1-11ea-8027-8b4eb899b278"));
-
-        System.out.println(fromTimeUUID(UUID.fromString(UUIDs.timeBased().toString())));
+    public static void main(String[] args)throws Exception {
+        String tenantId="1ea5793ebb506e0968c59ca7e358b66";
+        System.out.println(UUIDConverter.fromString("1ea5793ebb506e0968c59ca7e358b66"));
+        ObjectMapper objectMapper=new ObjectMapper();
+        String json="{\"gateway\":true}";
+        JsonNode rootNode = objectMapper.readTree(json);
+        System.out.println(rootNode);
     }
 
     /**
@@ -107,12 +109,48 @@ public class TestController {
      *新增网关表
      * */
     @PostMapping(value = "/gateway/add")
-    public GatewayInfoEntity gatwwayAdd(@RequestBody GatewayInfoEntity req){
+    public GatewayInfoEntity gatwwayAdd(@RequestBody GatewayInfoEntity req)throws ThingsboardException {
         String tenantId="1ea5793ebb506e0968c59ca7e358b66";
-        //新增网关信息
-        req.setId(UUIDs.timeBased().toString());
-        req.setTenantId(tenantId);
-        GatewayInfoEntity result=gatewayInfoDao.save(req);
+        GatewayInfoEntity result=null;
+        Device device=new Device();
+        try {
+            //新增网关信息
+            req.setId(UUIDConverter.fromTimeUUID(UUIDs.timeBased()));
+            req.setTenantId(tenantId);
+            result=gatewayInfoDao.save(req);
+            //新增设备基表
+
+            device.setName(req.getGatewayName());
+            device.setType("Basic");
+            device.setTenantId(new TenantId(UUIDConverter.fromString(tenantId)));
+            ObjectMapper objectMapper=new ObjectMapper();
+            String json="{\"gateway\":true}";
+            JsonNode rootNode = objectMapper.readTree(json);
+            device.setAdditionalInfo(rootNode);
+
+            Device savedDevice = checkNotNull(deviceService.saveDeviceWithAccessToken(device, null));
+
+            actorService
+                    .onDeviceNameOrTypeUpdate(
+                            savedDevice.getTenantId(),
+                            savedDevice.getId(),
+                            savedDevice.getName(),
+                            savedDevice.getType());
+
+            logEntityAction(savedDevice.getId(), savedDevice,
+                    savedDevice.getCustomerId(),
+                    device.getId() == null ? ActionType.ADDED : ActionType.UPDATED, null);
+
+            if (device.getId() == null) {
+                deviceStateService.onDeviceAdded(savedDevice);
+            } else {
+                deviceStateService.onDeviceUpdated(savedDevice);
+            }
+        } catch (Exception e) {
+            logEntityAction(emptyId(EntityType.DEVICE), device,
+                    null, device.getId() == null ? ActionType.ADDED : ActionType.UPDATED, e);
+            throw handleException(e);
+        }
         return result;
     }
 
