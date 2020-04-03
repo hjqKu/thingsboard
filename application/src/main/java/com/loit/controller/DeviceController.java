@@ -130,7 +130,8 @@ public class DeviceController extends BaseController {
         checkParameter(DEVICE_ID, strDeviceId);
         try {
             //修改获取TenantId
-            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            //TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            TenantId tenantId = getCurrentUser().getTenantId();
             DeviceId deviceId = new DeviceId(toUUID(strDeviceId));
             Device device=deviceService.findDeviceById(tenantId,deviceId);
 //            Device device = checkDeviceId(deviceId, Operation.DELETE);
@@ -240,7 +241,8 @@ public class DeviceController extends BaseController {
         checkParameter(DEVICE_ID, strDeviceId);
         try {
             DeviceId deviceId = new DeviceId(toUUID(strDeviceId));
-            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            //TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            TenantId tenantId = getCurrentUser().getTenantId();
             //修改 调整获取设备方法
             Device device= deviceService.findDeviceById(tenantId,deviceId);
             //Device device = checkDeviceId(deviceId, Operation.READ_CREDENTIALS);
@@ -266,7 +268,8 @@ public class DeviceController extends BaseController {
         checkNotNull(deviceCredentials);
         try {
             //修改获取TenantId
-            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            //TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            TenantId tenantId = getCurrentUser().getTenantId();
             //修改Device获取
             Device device=deviceService.findDeviceById(tenantId,deviceCredentials.getDeviceId());
             //Device device = checkDeviceId(deviceCredentials.getDeviceId(), Operation.WRITE_CREDENTIALS);
@@ -303,7 +306,8 @@ public class DeviceController extends BaseController {
         try {
             //修改部门id
             //TenantId tenantId = getCurrentUser().getTenantId();
-            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            //TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            TenantId tenantId = getCurrentUser().getTenantId();
             TextPageLink pageLink = createPageLink(limit, textSearch, idOffset, textOffset);
             if (type != null && type.trim().length() > 0) {
                 return checkNotNull(deviceService.findDevicesByTenantIdAndType(tenantId, type, pageLink));

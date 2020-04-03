@@ -100,9 +100,9 @@ public final class DeviceEntity extends BaseSqlEntity<Device> implements SearchT
         if (tenantId != null) {
             device.setTenantId(new TenantId(toUUID(tenantId)));
         }
-        if (customerId != null) {
-            device.setCustomerId(new CustomerId(toUUID(customerId)));
-        }
+//        if (customerId != null) {
+//            device.setCustomerId(new CustomerId(toUUID(customerId)));
+//        }
         device.setName(name);
         device.setType(type);
         device.setLabel(label);

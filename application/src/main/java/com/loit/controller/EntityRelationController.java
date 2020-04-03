@@ -236,7 +236,8 @@ public class EntityRelationController extends BaseController {
                                                  @RequestParam(TO_TYPE) String strToType,
                                                  @RequestParam(value = "relationTypeGroup", required = false) String strRelationTypeGroup) throws ThingsboardException {
         //修改TenantId获取
-        TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+        //TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+        TenantId tenantId = getCurrentUser().getTenantId();
         checkParameter(TO_ID, strToId);
         checkParameter(TO_TYPE, strToType);
         EntityId entityId = EntityIdFactory.getByTypeAndId(strToType, strToId);

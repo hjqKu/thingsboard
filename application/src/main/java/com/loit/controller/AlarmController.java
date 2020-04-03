@@ -181,7 +181,8 @@ public class AlarmController extends BaseController {
         }
         //修改 去除检查实体(牵扯验证用户需要频繁调用)
         //checkEntityId(entityId, Operation.READ);
-        TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+        //TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+        TenantId tenantId = getCurrentUser().getTenantId();
         try {
             TimePageLink pageLink = createPageLink(limit, startTime, endTime, ascOrder, offset);
             return checkNotNull(alarmService.findAlarms(tenantId, new AlarmQuery(entityId, pageLink, alarmSearchStatus, alarmStatus, fetchOriginator)).get());

@@ -73,7 +73,7 @@ public class TenantController extends BaseController {
         }
     }
     /**
-     * 新增租户
+     * 新增租户并新增主规则链
      * */
     @PreAuthorize("hasAuthority('SYS_ADMIN')")
     @RequestMapping(value = "/tenant", method = RequestMethod.POST)

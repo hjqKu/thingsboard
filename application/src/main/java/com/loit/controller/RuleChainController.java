@@ -160,8 +160,8 @@ public class RuleChainController extends BaseController {
 
             //RuleChain ruleChain = checkRuleChain(ruleChainId, Operation.WRITE);
             //修改获取TenantId
-            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
-            //TenantId tenantId = getCurrentUser().getTenantId();
+            //TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            TenantId tenantId = getCurrentUser().getTenantId();
             RuleChain ruleChain=ruleChainService.findRuleChainById(tenantId,ruleChainId);
             RuleChain previousRootRuleChain = ruleChainService.getRootTenantRuleChain(tenantId);
             if (ruleChainService.setRootRuleChain(tenantId, ruleChainId)) {
@@ -238,8 +238,8 @@ public class RuleChainController extends BaseController {
             @RequestParam(required = false) String textOffset) throws ThingsboardException {
         try {
             //修改获取TenantId
-            TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
-            //TenantId tenantId = getCurrentUser().getTenantId();
+            //TenantId tenantId=new TenantId(UUID.fromString("ebb506e0-5793-11ea-968c-59ca7e358b66"));
+            TenantId tenantId = getCurrentUser().getTenantId();
             TextPageLink pageLink = createPageLink(limit, textSearch, idOffset, textOffset);
             return checkNotNull(ruleChainService.findTenantRuleChains(tenantId, pageLink));
         } catch (Exception e) {
